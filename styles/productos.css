@@ -1,0 +1,63 @@
+body{
+    background-color: gray;
+}
+
+#section-productos{
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.card-producto{
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 300px;
+    margin: 10px;
+    background-color: rgb(49, 49, 49);
+    color: white;
+    border-radius: 15px;
+}
+
+.card-producto *{
+    margin: 10px;
+}
+
+.card-producto div{
+    margin: 0;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.card-producto img{
+    width: 100%;
+    margin: 0;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.clasificacion-edad{
+    border-radius: 15px;
+    background-color: greenyellow;
+    width: 10%;
+    text-align: center;
+}
+
+.form-productos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+@media(max-width: 600px){
+
+    #section-productos{
+        
+    }
+
+}
