@@ -4,14 +4,17 @@
 
 body{
     margin: 0;
+    background-color: #1B1F30;
 }
 
+/* Estilado de NAV */
 #navbar{
     background-color: #0A1128;
     display: flex;
     justify-content: space-around;
     align-items: center;
     margin-bottom: 0;
+    height: fit-content;
 }
 
 #navbar ul{
@@ -19,11 +22,12 @@ body{
     justify-content: space-around;
     align-items: center;
     list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 #navbar ul li{
-    margin: 10px;
-}
+padding: 10px;}
 
 #navbar ul li a{
     color: #FEFCFB;
@@ -32,12 +36,29 @@ body{
 
 #navbar ul li a:hover{
     color: #1282A2;
+    background-color: azure;
+}
+
+#nav-linksbtns button{
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 15px;
+    padding: 15px;
+    background-color: #0A1128;
+}
+
+#nav-linksbtns button:hover{
+    cursor: pointer;
+    background-color: #034078;
 }
 
 .logo{
-    width: 100px;
+    width: 70px;
+    border-radius: 100px;
 }
 
+/* Posicion del container main */
 main{
     margin: 0;
     display: flex;
@@ -60,14 +81,36 @@ main{
     align-items: center;
 }
 
-.input-text{
-    width: 400px;
-    height: 40px;
-    border-radius: 5px;
-    border-style: solid;
-    margin: 10px;
+/* Estilizado para la barra de busqueda*/
+.search-bar{
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    padding: 5px 0;
+    border-bottom: 2px solid white;
+}
+.search-bar input{
+    color: white;
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    outline: none;
+    width: 50vw;
 }
 
+.filter-select{
+    color: white;
+    font-weight: 600;
+    border-radius: 15px;
+    padding: 15px;
+    font-size: 15px;
+    width: 200px;
+    margin-left: 10px;
+    background-color: #0A1128; 
+    border: none;
+}
+
+/* Botones */
 .boton{
     color: white;
     border: 0;
@@ -81,4 +124,22 @@ main{
 .boton:hover{
     cursor: pointer;
     background-color: #034078;
+}
+
+
+
+
+footer{
+    background-color: #0A1128;
+    color: white;
+    padding: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }

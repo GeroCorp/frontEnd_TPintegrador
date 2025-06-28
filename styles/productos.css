@@ -1,63 +1,109 @@
-body{
-    background-color: gray;
+.main-container {
+    width: 100%;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #section-productos{
-    margin-top: 50px;
+    margin-top: 30px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
 }
 
+/*
+    Actualización de estilos para la sección de productos
+*/
+/* Cartas de peliculas*/
+
+.container-producto{
+    transition: 500ms;
+    text-decoration: none;
+}
+.container-producto:hover{
+    transform: scale(1.05);
+    transition: 500ms;
+}
 .card-producto{
     text-align: left;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 300px;
-    margin: 10px;
+    width: 270px;
     background-color: rgb(49, 49, 49);
     color: white;
     border-radius: 15px;
 }
 
-.card-producto *{
-    margin: 10px;
+/* Imagen de cartas*/
+.prod-img-container{
+    position: relative;
 }
-
-.card-producto div{
-    margin: 0;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-}
-
-.card-producto img{
+.imagen-prod{
     width: 100%;
     margin: 0;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    border-radius: 15px 15px 0 0;
+
 }
 
+/* Burbujas de texto flotante */
 .clasificacion-edad{
+    background-color: rgb(41, 163, 16);
+    color: white;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    padding: 7px;
     border-radius: 15px;
-    background-color: greenyellow;
-    width: 10%;
-    text-align: center;
+}
+.movie-time{
+    background-color: rgba(255, 255, 255, 0.25);
+    color: white;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 7px;
+    border-radius: 15px;
+    font-weight: 500;
 }
 
-.form-productos{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.movie-title{
+    font-family: Oswald;
 }
 
+.prod-text{
+    margin-left: 5px;
+}
+.prod-text p{
+    font-size: 14px;
+}
 
-
-@media(max-width: 600px){
-
-    #section-productos{
-        
+@media (max-width: 1200px) {
+    .card-producto {
+        width: 200px;
+        margin: 10px 0;
     }
+    .prod-img-container {
+        width: 100%;
+    }
+    .movie-time, .clasificacion-edad {
+        font-size: 12px;
+        padding: 5px;
+    }
+    .movie-title {
+        font-size: 18px;
+    }
+    
+}
 
+@media (max-width: 800px) {
+   .search-bar{
+    display: none;
+    transition: 500ms;
+   }   
+    
 }

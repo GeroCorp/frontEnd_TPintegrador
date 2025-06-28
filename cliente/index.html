@@ -3,108 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="src/logo.png" type="image/x-icon">
     <title>Cine | Inicio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles/main.css">
     <link rel="stylesheet" href="../styles/productos.css">
+    
     <link rel="icon" href="">
 </head>
 <body>
     
     <header>
         <nav id="navbar">
-            <img class="logo" src="" alt="logo">
-            <ul>
-                <li><a href="">peliculas</a></li>
-                <li><a href="">candy</a></li>
+            
+            <img class="logo" src="./src/logo.png" alt="logo">
+            
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar...">
+            </div>
+            
+            <ul id="nav-linksbtns">
+                
+                <li><button id="movies-button">Cartelera</button></li>
+                <li><button id="candy-button">Candy</button></li>
+
             </ul>
         </nav>
     </header>
 
-    <main>
+    <main class="main-container">
 
         <h2 class="titulo">Peliculas en cartelera</h2>
+        <div class="filter-items">
+            <select name="Age" id="age-filter" class="filter-select">
+                <option value="all">Todas las edades</option>
+                <option value="ATP">ATP</option>
+                <option value="13">+13</option>
+                <option value="16">+16</option>
+                <option value="18">+18</option>
+            </select>
+            <select name="Genre" id="genre-filter" class="filter-select">
+                <option value="all">Todos los generos</option>
+                <option value="action">Accion</option>
+                <option value="comedy">Comedia</option>
+                <option value="drama">Drama</option>
+                <option value="horror">Terror</option>
+                <option value="fantasy">Fantasia</option>
+            </select>
+        </div>
         <section id="section-productos">
 
-            <div class="card-producto">
-                <div>
-                    <img src="HO00010345.jpg" alt="">
+
+            <a href="#" class="container-producto">
+
+                <div class="card-producto">
+
+                    <div class="prod-img-container">
+                        <div class="clasificacion-edad">
+                            <strong>ATP</strong>
+                        </div>
+                        <div class="movie-time">
+                            <span>2h 20m</span>
+                        </div>
+                        <img src="./src/HO00010345.jpg" alt="Titulo Pelicula" class="imagen-prod">
+                    </div>
+
+                    <div class="prod-text">
+                        <h3 class="movie-title">COMO ENTRANAR A TU DRAGON</h3>
+                        <p>2D * 4D E-MOTION ETC</p>
+                    </div>
+
                 </div>
-                <h3>Como entrenar a tu dragon</h3>
-                <p>3d * 4d * e-motion</p>
-                <span class="clasificacion-edad">atp</span>
 
-            </div>
+            </a>
 
-            <div class="card-producto">
-                <div>
-                    <img src="HO00010345.jpg" alt="">
+            <a href="#" class="container-producto">
+
+                <div class="card-producto">
+
+                    <div class="prod-img-container">
+                        <div class="clasificacion-edad">
+                            <strong>ATP</strong>
+                        </div>
+                        <div class="movie-time">
+                            <span>2h 20m</span>
+                        </div>
+                        <img src="./src/HO00010345.jpg" alt="Titulo Pelicula" class="imagen-prod">
+                    </div>
+
+                    <div class="prod-text">
+                        <h3 class="movie-title">COMO ENTRANAR A TU DRAGON</h3>
+                        <p>2D * 4D E-MOTION ETC</p>
+                    </div>
+
                 </div>
-                <h3>Como entrenar a tu dragon</h3>
-                <p>3d * 4d * e-motion</p>
-                <p>atp</p>
 
-            </div>
+            </a>
 
-            <div class="card-producto">
-                <div>
-                    <img src="HO00010345.jpg" alt="">
+            <a href="#" class="container-producto">
+
+                <div class="card-producto">
+
+                    <div class="prod-img-container">
+                        <div class="clasificacion-edad">
+                            <strong>ATP</strong>
+                        </div>
+                        <div class="movie-time">
+                            <span>2h 20m</span>
+                        </div>
+                        <img src="./src/HO00010345.jpg" alt="Titulo Pelicula" class="imagen-prod">
+                    </div>
+
+                    <div class="prod-text">
+                        <h3 class="movie-title">COMO ENTRANAR A TU DRAGON</h3>
+                        <p>2D * 4D E-MOTION ETC</p>
+                    </div>
+
                 </div>
-                <h3>Como entrenar a tu dragon</h3>
-                <p>3d * 4d * e-motion</p>
-                <p>atp</p>
 
-            </div>
+            </a>
 
-            <div class="card-producto">
-                <div>
-                    <img src="HO00010345.jpg" alt="">
+            <a href="#" class="container-producto">
+
+                <div class="card-producto">
+
+                    <div class="prod-img-container">
+                        <div class="clasificacion-edad">
+                            <strong>ATP</strong>
+                        </div>
+                        <div class="movie-time">
+                            <span>2h 20m</span>
+                        </div>
+                        <img src="./src/HO00010345.jpg" alt="Titulo Pelicula" class="imagen-prod">
+                    </div>
+
+                    <div class="prod-text">
+                        <h3 class="movie-title">COMO ENTRANAR A TU DRAGON</h3>
+                        <p>2D * 4D E-MOTION ETC</p>
+                    </div>
+
                 </div>
-                <h3>Como entrenar a tu dragon</h3>
-                <p>3d * 4d * e-motion</p>
-                <p>atp</p>
 
-            </div>
-
-            <div class="card-producto">
-                <div>
-                    <img src="HO00010345.jpg" alt="">
-                </div>
-                <h3>Como entrenar a tu dragon</h3>
-                <p>3d * 4d * e-motion</p>
-                <p>atp</p>
-
-            </div>
-
-            <div class="card-producto">
-                <div>
-                    <img src="HO00010345.jpg" alt="">
-                </div>
-                <h3>Como entrenar a tu dragon</h3>
-                <p>3d * 4d * e-motion</p>
-                <p>atp</p>
-
-            </div>
-
-            <div class="card-producto">
-                <div>
-                    <img src="HO00010345.jpg" alt="">
-                </div>
-                <h3>Como entrenar a tu dragon</h3>
-                <p>3d * 4d * e-motion</p>
-                <p>atp</p>
-
-            </div>
+            </a>
+           
         </section>
-
-        <section>
-
-        </section>
-
 
     </main> 
 
     <footer>
-
+        <p>Desarrollado por:</p>
+        <ul>
+            <li>Matias</li>
+            <li>Gero</li>
+        </ul>
     </footer>
 
 </body>
