@@ -12,7 +12,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 15px;
-    width: 100%;
+    width: 80%;
 }
 
 /*
@@ -89,6 +89,7 @@
     }
     .prod-img-container {
         width: 100%;
+        height: auto;
     }
     .movie-time, .clasificacion-edad {
         font-size: 12px;
