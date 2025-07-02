@@ -1,0 +1,76 @@
+
+#carrito-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.card-carrito{
+    margin: 10px;
+    border-radius: 5px;
+    color: white;
+    width: 80%;
+    height: 120px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #0f121b;
+}
+
+.img-carrito{
+    width: 70px;
+    height: 100px;
+}
+
+.detalles-container{
+    width: 250px;
+}
+
+.cantidad-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cantidad-container div{
+    margin: 20px;
+}
+
+.boton-cantidad{
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    border: 0;
+    color: white;
+    background-color: #001F54;
+}
+
+.boton-cantidad:hover{
+    cursor: pointer;
+    background-color: #034078;
+}
+
+.linea-carrito{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    border: 2px solid black;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.total-container{
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+    color: white;
+}
+
+@media (max-width: 768px){
+    .card-carrito{
+        width: 300px;
+        flex-direction: column;
+        height: 350px;
+    }
+}

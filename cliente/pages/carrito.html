@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../src/img/logo.png" type="image/x-icon">
+    <title>Cine | Carrito</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="../../styles/carrito.css">
+</head>
+<body>
+    
+    <header>
+        <nav id="navbar">
+            
+            <img class="logo" src="../src/img/logo.png" alt="logo">
+            
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar..." id="search-input">
+            </div>
+            
+            <ul id="nav-linksbtns">
+                
+                <li><button id="movies-button">Cartelera</button></li>
+                <li><button id="candy-button">Candy</button></li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-container">
+
+        <h2 class="titulo">Carrito</h2>
+
+        <section id="carrito-container">
+
+            <div class="card-carrito">
+
+                <div><img src="../src/img/HO00010345.jpg" alt="" class="img-carrito"></div>
+
+                <div class="detalles-container">
+
+                    <h3>Como Entrenar a tu dragon</h3>
+                    <p>Sala: 2D</p>
+
+                </div>
+
+                <div class="cantidad-container">
+
+                    <div><button class="boton-cantidad">-</button></div>  
+                    <p>1</p>
+                    <div><button class="boton-cantidad">+</button></div>
+                    
+                </div>
+
+                <div><p>Precio: <span id="precio-producto-1">$2000</span></p></div>
+
+            </div>
+
+            <div class="card-carrito">
+
+                <div><img src="../src/img/gol.webp" alt="" class="img-carrito"></div>
+
+                <div class="detalles-container">
+
+                    <h3>Metegol</h3>
+                    <p>Sala: 3D</p>
+
+                </div>
+
+                <div class="cantidad-container">
+
+                    <div><button class="boton-cantidad">-</button></div>  
+                    <p>1</p>
+                    <div><button class="boton-cantidad">+</button></div>
+                    
+                </div>
+
+                <div><p>Precio: <span id="precio-producto-1">$2000</span></p></div>
+
+            </div>
+
+            <div class="linea-carrito"></div>
+
+            <div class="total-container"><p>Total: <span>$4000</span></p></div>
+
+        </section>
+
+    </main>
+
+
+</body>
+</html>
