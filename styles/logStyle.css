@@ -1,0 +1,44 @@
+*{
+    font-family: sans-serif;
+}
+
+body{
+    margin: 0;
+    background-color: #1B1F30;
+    color: white;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.logo-image{
+    max-width: 400px;
+    margin-top: -20vh;
+}
+
+.options{
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    width: 50%;
+
+}
+
+button{
+    color: white;
+    font-size: 20px;
+    width: 200px;
+    border: none;
+    border-radius: 15px;
+    padding: 15px;
+    background-color: #0A1128;
+}
+button:hover{
+    cursor: pointer;
+    background-color: #034078;
+}

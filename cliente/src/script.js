@@ -1,5 +1,5 @@
 //Las categorias de las edades son ATP: 0, +13: 1, +16: 2, +18: 3
-rate = ["ATP","+13","+16","+18"]
+const rate = ["ATP","+13","+16","+18"]
 
 //Lista para probar funcionamiento
 movies = [
@@ -24,7 +24,7 @@ movies = [
         genre: ["accion","comedia"],
         tags: ["2d","3d","e-motion"],
         age_rate:rate[3],
-        time: "2H 40M",
+        time: "2H 30M",
         img_url: "gol.webp"
     },
     {
@@ -42,25 +42,20 @@ movies = [
         age_rate:rate[1],
         time: "2H 40M",
         img_url: "harry.jpg"
-    },
-    {
-        titulo: "Karoo the movie: live action 2",
-        genre: ["accion","comedia"],
-        tags: ["2d","3d","e-motion"],
-        age_rate:rate[3],
-        time: "2H 40M",
-        img_url: "kaure.webp"
     }
 ]
+
+/////////////////////////
+// Constantes globales //
+/* Mover a un archivo separado */
 
 const SECTION_MOVIES = document.getElementById("section-productos");
 const SEARCH_BAR = document.getElementById("search-input")
 const AGE_FILTER = document.getElementById("age-filter")
 
-function filterMovies (type){
+// Filtrar peliculas por clasificación de edad
+function ageFilter (){
     let newList = [];
-
-    console.log(AGE_FILTER.value);
 
     switch (parseInt(AGE_FILTER.value)) {
         case -1:
@@ -92,6 +87,7 @@ function filterMovies (type){
     setMovies(newList)
 }
 
+// Display de peliculas en la lista
 function setMovies(array){
     let temp_append= "";
     array.forEach(e => {
@@ -124,6 +120,7 @@ function setMovies(array){
     });
 } 
 
+// Funcionalidad de barra de busqueda, funciona solo con nombres, no categoria/clasificación.
 SEARCH_BAR.addEventListener("keyup", e  =>{
     let inputValue = SEARCH_BAR.value.toUpperCase()
 
@@ -134,9 +131,10 @@ SEARCH_BAR.addEventListener("keyup", e  =>{
     setMovies(filtered);
 })
 
+// Detectar click en filtro para llamar la función
 AGE_FILTER.addEventListener("click", e =>{
     
-    filterMovies(e)
+    ageFilter()
 
 })
 
@@ -145,4 +143,3 @@ function init(){
 }
 
 init()
-console.log("hola mundo");
