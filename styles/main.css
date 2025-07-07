@@ -17,6 +17,10 @@ body{
     height: fit-content;
 }
 
+#navbar p{
+  color: white;
+}
+
 #navbar ul{
     display: flex;
     justify-content: space-around;
@@ -55,6 +59,12 @@ padding: 10px;}
 
 .logo{
     width: 80px;
+}
+
+.container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .style-switch {
@@ -187,6 +197,18 @@ main{
 .filter-select:focus{
     outline: none;
 }
+
+
+.input-form{
+
+  border: 0;
+  border-radius: 10px;
+  width: 450px;
+  height: 45px;
+
+}
+
+
 /* Botones */
 .boton{
     color: white;

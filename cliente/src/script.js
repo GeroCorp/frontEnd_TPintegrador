@@ -1,5 +1,5 @@
 //Las categorias de las edades son ATP: 0, +13: 1, +16: 2, +18: 3
-const rate = ["ATP","+13","+16","+18"]
+const rate = ["ATP","+13","+16","+18"];
 
 //Lista para probar funcionamiento
 movies = [
@@ -43,15 +43,17 @@ movies = [
         time: "2H 40M",
         img_url: "harry.jpg"
     }
-]
+];
 
 /////////////////////////
 // Constantes globales //
 /* Mover a un archivo separado */
 
 const SECTION_MOVIES = document.getElementById("section-productos");
-const SEARCH_BAR = document.getElementById("search-input")
-const AGE_FILTER = document.getElementById("age-filter")
+const SEARCH_BAR = document.getElementById("search-input");
+const AGE_FILTER = document.getElementById("age-filter");
+const NOMBRE_USUARIO = document.getElementById("nombre");
+const BTN_CARRITO = document.getElementById("carrito-button");
 
 // Filtrar peliculas por clasificación de edad
 function ageFilter (){
@@ -64,27 +66,27 @@ function ageFilter (){
         case 0:
             newList = movies.filter(
                 m => m.age_rate == rate[0]
-            )
+            );
             break;
         case 1:
             newList = movies.filter(
                 m => m.age_rate == rate[1]
-            )
+            );
             break;
         case 2:
             newList = movies.filter(
                 m => m.age_rate == rate[2]
-            )
+            );
             break;
     
         case 3:
             newList = movies.filter(
                 m => m.age_rate == rate[3]
-            )
+            );
             break;
 
     }
-    setMovies(newList)
+    setMovies(newList);
 }
 
 // Display de peliculas en la lista
@@ -113,7 +115,7 @@ function setMovies(array){
                 </div>
 
             </a>
-        `
+        `;
         SECTION_MOVIES.innerHTML = temp_append;
 
 
@@ -122,7 +124,7 @@ function setMovies(array){
 
 // Funcionalidad de barra de busqueda, funciona solo con nombres, no categoria/clasificación.
 SEARCH_BAR.addEventListener("keyup", e  =>{
-    let inputValue = SEARCH_BAR.value.toUpperCase()
+    let inputValue = SEARCH_BAR.value.toUpperCase();
 
     let filtered = movies.filter(
         m => m.titulo.toUpperCase().includes(inputValue)
@@ -134,12 +136,34 @@ SEARCH_BAR.addEventListener("keyup", e  =>{
 // Detectar click en filtro para llamar la función
 AGE_FILTER.addEventListener("click", e =>{
     
-    ageFilter()
+    ageFilter();
 
 })
 
-function init(){
-    setMovies(movies)
+
+BTN_CARRITO.addEventListener("click", () => {
+
+    location.href = "pages/carrito.html";
+
+});
+
+
+function verificar_nombre(){
+
+    let nombre = sessionStorage.getItem("nombre");
+
+    if(!nombre){
+        location.href = "index.html";
+    }
+
+    NOMBRE_USUARIO.innerHTML = "Hola, " + nombre;
+
 }
 
-init()
+
+function init(){
+    verificar_nombre();
+    setMovies(movies);
+}
+
+init();
