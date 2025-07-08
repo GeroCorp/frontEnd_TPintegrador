@@ -39,9 +39,9 @@ function mostrar_carrito(){
 
                 <div class="cantidad-container">
 
-                    <div><button class="boton-cantidad">-</button></div>  
-                    <p>1</p>
-                    <div><button class="boton-cantidad">+</button></div>
+                    <div><button id="boton-menos-${prod.id}" class="boton-cantidad">-</button></div>  
+                    <p id="cant-prod-${prod.id}">${prod.cantidad}</p>
+                    <div><button id="boton-mas-${prod.id}" class="boton-cantidad">+</button></div>
                     
                 </div>
 
@@ -59,9 +59,44 @@ function mostrar_carrito(){
 
 }
 
+function evento_boton_cantidad(){
+
+    for(let i=0; i<carrito.length; i++){
+
+    const BOTON_MAS = document.getElementById(`boton-mas-${carrito[i].id}`);
+    const BOTON_MENOS = document.getElementById(`boton-menos-${carrito[i].id}`);
+    const TXT_CANT = document.getElementById(`cant-prod-${carrito[i].id}`);
+
+    BOTON_MAS.addEventListener("click", () => {
+        carrito[i].cantidad += 1;
+        TXT_CANT.innerHTML = carrito[i].cantidad;
+        sessionStorage.setItem("carrito", JSON.stringify(carrito));
+    })
+
+    BOTON_MENOS.addEventListener("click", () => {
+        carrito[i].cantidad -= 1;
+
+        if(carrito[i].cantidad <= 0){
+
+            carrito.splice(i, 1);
+            sessionStorage.setItem("carrito", JSON.stringify(carrito));
+            mostrar_carrito();
+            return;
+        }
+
+
+        TXT_CANT.innerHTML = carrito[i].cantidad;
+        sessionStorage.setItem("carrito", JSON.stringify(carrito));
+    })
+
+    }
+
+}
+
 function init(){
     verificar_nombre();
     mostrar_carrito();
+    evento_boton_cantidad();
 }
 
 init();
