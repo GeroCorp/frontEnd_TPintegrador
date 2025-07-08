@@ -1,4 +1,5 @@
 const BTN_CARTELERA = document.getElementById("movies-button");
+const NOMBRE_USUARIO = document.getElementById("nombre")
 
 BTN_CARTELERA.addEventListener("click", () => {
     location.href = "../main.html";

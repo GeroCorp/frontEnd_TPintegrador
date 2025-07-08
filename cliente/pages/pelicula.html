@@ -8,9 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./clientStyles/main.css">
-    <link rel="stylesheet" href="./clientStyles/productos.css">
-    <script defer src="./src/script.js"></script>
+    <link rel="stylesheet" href="../clientStyles/main.css">
+    <link rel="stylesheet" href="../clientStyles/peliculas.css">
     
     <link rel="icon" href="">
 </head>
@@ -46,28 +45,37 @@
     </header>
 
     <main class="main-container">
-
-        <h2 class="titulo">Peliculas en cartelera</h2>
-        <div class="filter-items">
-            <select name="Age" id="age-filter" class="filter-select">
-                <option value="-1">Todas las edades</option>
-                <option value="0">ATP</option>
-                <option value="1">+13</option>
-                <option value="2">+16</option>
-                <option value="3">+18</option>
-            </select>
-            <select name="Genre" id="genre-filter" class="filter-select">
-                <option value="all">Todos los generos</option>
-                <option value="accion">Accion</option>
-                <option value="comedia">Comedia</option>
-                <option value="drama">Drama</option>
-                <option value="terror">Terror</option>
-                <option value="fantasia">Fantasia</option>
-            </select>
+        
+        <div clas="main-info">
+            <h1>Titulo Pelicula</h1>
+            <img src="../src/img/lala.jpg" alt="La la land" class="pelicula-img">
+            <p class="pelicula-descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam, voluptatum. Doloribus, cumque. Doloremque,
+                voluptates, cumque. Doloremque, voluptates, cumque. 
+            </p>
+            <p class="pelicula-genero">Genero: Terror</p>
+            <p class="pelicula-duracion">Duracion: 120 min</p>
+            <p class="pelicula-clasificacion">Clasificacion: +16</p>
         </div>
-        <section id="section-productos">
-           
-        </section>
+        <div class="entradas-info">
+
+            <h2>Entradas</h2>
+            <div class="entradas-container">
+                <div class="entrada-card">
+                    <p>Entrada 1</p>
+                    <p>Hora: 18:00</p>
+                    <p>Fecha: 01/01/2024</p>
+                    <button class="btn-entradas">Comprar</button>
+                </div>
+                <div class="entrada-card">
+                    <p>Entrada 2</p>
+                    <p>Hora: 20:00</p>
+                    <p>Fecha: 01/01/2024</p>
+                    <button class="btn-entradas">Comprar</button>
+                </div>
+            </div>
+
+        </div>
 
     </main> 
 

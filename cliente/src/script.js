@@ -1,92 +1,62 @@
-//Las categorias de las edades son ATP: 0, +13: 1, +16: 2, +18: 3
-const rate = ["ATP","+13","+16","+18"];
+///////////////////////
+// Conexión backEnd //
+const url = "http://localhost:3000";
 
-//Lista para probar funcionamiento
-movies = [
-    {
-        titulo: "Como entrenar a tu dragon",
-        genre: ["accion","comedia","fantasia"],
-        tags:["3d","4d","e-motion"],
-        age_rate: rate[0],
-        time: "2H 20M",
-        img_url: "HO00010345.jpg"
-    },
-    {
-        titulo: "Guerreras kpop",
-        genre: ["accion","comedia"],
-        tags: ["2d","3d","e-motion"],
-        age_rate:rate[0],
-        time: "2H 40M",
-        img_url: "kpop.jpg"
-    },
-    {
-        titulo: "Metegol",
-        genre: ["accion","comedia"],
-        tags: ["2d","3d","e-motion"],
-        age_rate:rate[3],
-        time: "2H 30M",
-        img_url: "gol.webp"
-    },
-    {
-        titulo: "la la land",
-        genre: ["accion","comedia"],
-        tags: ["2d","3d","e-motion"],
-        age_rate:rate[2],
-        time: "2H 40M",
-        img_url: "lala.jpg"
-    },
-    {
-        titulo: "harry",
-        genre: ["accion","comedia"],
-        tags: ["2d","3d","e-motion"],
-        age_rate:rate[1],
-        time: "2H 40M",
-        img_url: "harry.jpg"
+async function getMovies() {
+    try{
+
+        let peliculas = await fetch(`${url}/movies`); // Recupera todas las peliculas de la base de datos
+
+        let datos = await peliculas.json();
+
+
+        return datos.payload;
+
+    } catch(error){
+
+        console.error(error);
+
     }
-];
+}
+
+
 
 /////////////////////////
 // Constantes globales //
-/* Mover a un archivo separado */
-
 const SECTION_MOVIES = document.getElementById("section-productos");
 const SEARCH_BAR = document.getElementById("search-input");
 const AGE_FILTER = document.getElementById("age-filter");
+const CAT_FILTER = document.getElementById("genre-filter")
 const NOMBRE_USUARIO = document.getElementById("nombre");
 const BTN_CARRITO = document.getElementById("carrito-button");
+let movieList = [];
 
-// Filtrar peliculas por clasificación de edad
-function ageFilter (){
-    let newList = [];
+console.log("Selectores cargados:", AGE_FILTER, CAT_FILTER);
 
-    switch (parseInt(AGE_FILTER.value)) {
-        case -1:
-            newList = movies;
-            break;
-        case 0:
-            newList = movies.filter(
-                m => m.age_rate == rate[0]
-            );
-            break;
-        case 1:
-            newList = movies.filter(
-                m => m.age_rate == rate[1]
-            );
-            break;
-        case 2:
-            newList = movies.filter(
-                m => m.age_rate == rate[2]
-            );
-            break;
-    
-        case 3:
-            newList = movies.filter(
-                m => m.age_rate == rate[3]
-            );
-            break;
 
+// Filtrar peliculas 
+function filters() {
+
+    let list = movieList; // Lista de filtro
+
+    // Filtro por edad
+    const age = parseInt(AGE_FILTER.value);
+    if (age !== -1) {
+        list = list.filter(m => {
+            if (age === 0) return m.clasificacion === "ATP";
+            if (age === 1) return m.clasificacion === "+13";
+            if (age === 2) return m.clasificacion === "+16";
+            if (age === 3) return m.clasificacion === "+18";
+        });
     }
-    setMovies(newList);
+
+    // Filtro por categoría/genero
+    const cat = CAT_FILTER.value.toLowerCase();
+    if (cat !== "all") {
+        list = list.filter(m => m.categoria.toLowerCase() === cat);
+    }
+
+    setMovies(list);
 }
 
 // Display de peliculas en la lista
@@ -99,17 +69,17 @@ function setMovies(array){
 
                     <div class="prod-img-container">
                         <div class="clasificacion-edad">
-                            <strong>${e.age_rate}</strong>
+                            <strong>${e.clasificacion}</strong>
                         </div>
                         <div class="movie-time">
-                            <span>${e.time}</span>
+                            <span>${e.duracion}H</span>
                         </div>
-                        <img src="./src/img/${e.img_url}" alt="${e.titulo}" class="imagen-prod">
+                        <img src="./src/img/${e.imagen}" alt="${e.titulo}" class="imagen-prod">
                     </div>
 
                     <div class="prod-text">
                         <h3 class="movie-title">${e.titulo.toUpperCase()}</h3>
-                        <p>${e.tags.join(' · ').toUpperCase()}</p>
+                        <p>${e.tags.split(',').join(' - ')}</p>
                     </div>
 
                 </div>
@@ -122,11 +92,13 @@ function setMovies(array){
     });
 } 
 
+
+
 // Funcionalidad de barra de busqueda, funciona solo con nombres, no categoria/clasificación.
 SEARCH_BAR.addEventListener("keyup", e  =>{
     let inputValue = SEARCH_BAR.value.toUpperCase();
 
-    let filtered = movies.filter(
+    let filtered = movieList.filter(
         m => m.titulo.toUpperCase().includes(inputValue)
     );
 
@@ -134,12 +106,8 @@ SEARCH_BAR.addEventListener("keyup", e  =>{
 })
 
 // Detectar click en filtro para llamar la función
-AGE_FILTER.addEventListener("click", e =>{
-    
-    ageFilter();
-
-})
-
+AGE_FILTER.addEventListener("change", filters)
+CAT_FILTER.addEventListener("change", filters) 
 
 BTN_CARRITO.addEventListener("click", () => {
 
@@ -161,9 +129,10 @@ function verificar_nombre(){
 }
 
 
-function init(){
+async function init(){
     verificar_nombre();
-    setMovies(movies);
+    movieList = await getMovies();
+    setMovies(movieList);
 }
 
 init();

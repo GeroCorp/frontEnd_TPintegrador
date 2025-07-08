@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../styles/main.css">
-    <link rel="stylesheet" href="../../styles/carrito.css">
+    <link rel="stylesheet" href="../clientStyles/main.css">
+    <link rel="stylesheet" href="../clientStyles/carrito.css">
     <script defer src="../src/carrito.js"></script>
 </head>
 <body>
@@ -17,8 +17,10 @@
     <header>
         <nav id="navbar">
             
-            <img class="logo" src="../src/img/logo.png" alt="logo">
+            <img class="logo" src="./src/img/whiteLogo.png" alt="logo">
             
+            <p id="nombre"></p>
+
             <div class="search-bar">
                 <input type="text" placeholder="Buscar..." id="search-input">
             </div>
@@ -26,9 +28,18 @@
             <ul id="nav-linksbtns">
                 
                 <li><button id="movies-button">Cartelera</button></li>
-                <li><button id="candy-button">Candy</button></li>
+                <li><button id="coleccionables-button">Coleccionables</button></li>
+                <li><button id="carrito-button">Carrito</button></li>
 
             </ul>
+            <div class="style-switch">
+                <img src="../src/img/whiteSun.png" alt="">
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+                <img src="../src/img/whiteMoon.png" alt="">
+            </div>
         </nav>
     </header>
 
@@ -40,7 +51,7 @@
 
             <div class="card-carrito">
 
-                <div><img src="../src/img/HO00010345.jpg" alt="" class="img-carrito"></div>
+                <div><img src="../src/img/dragon.jpg" alt="" class="img-carrito"></div>
 
                 <div class="detalles-container">
 
