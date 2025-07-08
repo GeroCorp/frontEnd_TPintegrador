@@ -19,7 +19,6 @@ async function getMovies() {
     }
 }
 
-console.log(sessionStorage.getItem("carrito"));
 
 /////////////////////////
 // Constantes globales //
@@ -28,9 +27,12 @@ const SEARCH_BAR = document.getElementById("search-input");
 const AGE_FILTER = document.getElementById("age-filter");
 const CAT_FILTER = document.getElementById("genre-filter")
 const NOMBRE_USUARIO = document.getElementById("nombre");
+
+const BTN_COLECCIONABLES = document.getElementById("coleccionables-button");
 const BTN_CARRITO = document.getElementById("carrito-button");
+
 let movieList = [];
-let carrito = [];
+let carrito = JSON.parse(sessionStorage.getItem("carrito")) || [];
 
 console.log("Selectores cargados:", AGE_FILTER, CAT_FILTER);
 
@@ -64,7 +66,7 @@ function filters() {
 function setMovies(array){
     let temp_append= "";
     array.forEach(e => {
-        temp_append += `<a href="#" class="container-producto">
+        temp_append += `<a id="movie-${e.id}" href="#" class="container-producto">
 
                 <div class="card-producto">
 
@@ -75,13 +77,13 @@ function setMovies(array){
                         <div class="movie-time">
                             <span>${e.duracion}H</span>
                         </div>
-                        <img src="./src/img/${e.imagen}" alt="${e.titulo}" class="imagen-prod">
+                        <img src="${e.imagen}" alt="${e.titulo}" class="imagen-prod">
                     </div>
 
                     <div class="prod-text">
                         <h3 class="movie-title">${e.titulo.toUpperCase()}</h3>
                         <p>${e.tags.split(',').join(' - ')}</p>
-                        </div><button id=boton-${e.id}>Añadir</button></div>
+                        </div><button id=boton-${e.id} class="boton-añadir">Añadir</button></div>
                     </div>
                 </div>
 
@@ -116,10 +118,16 @@ BTN_CARRITO.addEventListener("click", () => {
 
 });
 
+BTN_COLECCIONABLES.addEventListener("click", () => {
+
+    location.href = "pages/coleccionables.html";
+
+});
+
 function addToCart(id){
 
     if(carrito.some((m) => m.id === id)){
-        return
+        return;
     }
 
     movie = movieList.find((movie) => movie.id === id);
@@ -136,7 +144,30 @@ function buttonEvents(){
     movieList.forEach((movie) => {
         const button = document.getElementById(`boton-${movie.id}`);
 
-        button.addEventListener("click", () => addToCart(movie.id));
+        button.addEventListener("click", (event) => {
+
+            event.stopPropagation();
+            addToCart(movie.id);
+        });
+
+    });
+
+}
+
+function movieEvents(){
+
+    movieList.forEach((movie) => {
+
+        const MOVIE = document.getElementById(`movie-${movie.id}`);
+
+        MOVIE.addEventListener("click", (event) => {
+            
+            event.stopPropagation();
+
+            sessionStorage.setItem("movie", JSON.stringify(movie));
+            location.href = "pages/pelicula.html";
+
+        });
 
     });
 
@@ -160,6 +191,7 @@ async function init(){
     movieList = await getMovies();
     setMovies(movieList);
     buttonEvents();
+    movieEvents();
 }
 
 init();

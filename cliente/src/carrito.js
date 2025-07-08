@@ -1,11 +1,18 @@
 const BTN_CARTELERA = document.getElementById("movies-button");
+const BTN_COLECCIONABLES = document.getElementById("coleccionables-button");
 const NOMBRE_USUARIO = document.getElementById("nombre")
 const SECTION_CARRITO = document.getElementById("carrito-container");
+const CAPACIDAD_MAXIMA_SALA = 150;
 
-let carrito = JSON.parse(sessionStorage.getItem("carrito"));
+
+let carrito = JSON.parse(sessionStorage.getItem("carrito")) || [];
 
 BTN_CARTELERA.addEventListener("click", () => {
     location.href = "../main.html";
+});
+
+BTN_COLECCIONABLES.addEventListener("click", () => {
+    location.href = "coleccionables.html";
 });
 
 function verificar_nombre(){
@@ -68,6 +75,11 @@ function evento_boton_cantidad(){
     const TXT_CANT = document.getElementById(`cant-prod-${carrito[i].id}`);
 
     BOTON_MAS.addEventListener("click", () => {
+
+        if(carrito[i].cantidad >= CAPACIDAD_MAXIMA_SALA){
+            return;
+        }
+
         carrito[i].cantidad += 1;
         TXT_CANT.innerHTML = carrito[i].cantidad;
         sessionStorage.setItem("carrito", JSON.stringify(carrito));
