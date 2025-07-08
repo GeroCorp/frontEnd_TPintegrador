@@ -19,7 +19,7 @@ async function getMovies() {
     }
 }
 
-
+console.log(sessionStorage.getItem("carrito"));
 
 /////////////////////////
 // Constantes globales //
@@ -30,6 +30,7 @@ const CAT_FILTER = document.getElementById("genre-filter")
 const NOMBRE_USUARIO = document.getElementById("nombre");
 const BTN_CARRITO = document.getElementById("carrito-button");
 let movieList = [];
+let carrito = [];
 
 console.log("Selectores cargados:", AGE_FILTER, CAT_FILTER);
 
@@ -80,8 +81,8 @@ function setMovies(array){
                     <div class="prod-text">
                         <h3 class="movie-title">${e.titulo.toUpperCase()}</h3>
                         <p>${e.tags.split(',').join(' - ')}</p>
+                        </div><button id=boton-${e.id}>Añadir</button></div>
                     </div>
-
                 </div>
 
             </a>
@@ -115,6 +116,31 @@ BTN_CARRITO.addEventListener("click", () => {
 
 });
 
+function addToCart(id){
+
+    if(carrito.some((m) => m.id === id)){
+        return
+    }
+
+    movie = movieList.find((movie) => movie.id === id);
+    movie.cantidad = 1;
+
+    carrito.push(movie);
+    sessionStorage.setItem("carrito", JSON.stringify(carrito));
+    console.log(carrito);
+
+}
+
+function buttonEvents(){
+
+    movieList.forEach((movie) => {
+        const button = document.getElementById(`boton-${movie.id}`);
+
+        button.addEventListener("click", () => addToCart(movie.id));
+
+    });
+
+}
 
 function verificar_nombre(){
 
@@ -133,6 +159,7 @@ async function init(){
     verificar_nombre();
     movieList = await getMovies();
     setMovies(movieList);
+    buttonEvents();
 }
 
 init();
