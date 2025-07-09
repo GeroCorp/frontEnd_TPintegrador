@@ -16,6 +16,8 @@ movieForm.addEventListener("submit", e=>{
 
     getByID(id)
 
+    console.log(movieRes.childNodes);
+
 })
 
 async function getByID(id){
@@ -40,6 +42,13 @@ async function getByID(id){
 
 function showMovieRes(movie){
 
+    if (!movie || !movie.id) {
+        movieRes.innerHTML = "<h3>Película no encontrada</h3>";
+        DELETE_BUTTON.style.display = "none";
+
+        return;
+    }
+
     let htmlElemment = `
         <div class="card">
             <img id="card-img" src="${movie.titulo}" alt="Pelicula Poster">
@@ -55,5 +64,6 @@ function showMovieRes(movie){
                     `
 
     movieRes.innerHTML = htmlElemment;
+    DELETE_BUTTON.style.display = "block";
 
 }

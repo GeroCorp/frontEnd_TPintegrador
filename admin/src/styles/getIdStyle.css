@@ -52,3 +52,18 @@
     padding: 20px 40px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+.deleteBtn{
+    display: none;;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.deleteBtn:hover{
+    background-color: #ff1a1a;
+}
