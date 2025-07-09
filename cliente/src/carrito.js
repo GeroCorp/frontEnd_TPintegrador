@@ -91,10 +91,75 @@ function mostrar_carrito(){
 
     html += `<div class="linea-carrito"></div>
 
-            <div id="precio-total" class="total-container"><p>Total: <span>${calcular_total()}$</span></p></div>`;
+            <div id="precio-total" class="total-container"><p>Total: <span>${calcular_total()}$</span></p></div>
+            <div class="total-container"><button id="boton-comprar" class="boton">Comprar</button></div>`;
 
     SECTION_CARRITO.innerHTML = html;
 
+    const BOTON_COMPRAR = document.getElementById("boton-comprar");
+
+    BOTON_COMPRAR.addEventListener("click", () => {
+
+        if(confirm("¿Comprar?")){
+
+            crear_ticket();
+
+            sessionStorage.removeItem("carrito_pelicula");
+            sessionStorage.removeItem("carrito_coleccionable");
+
+            carrito_pelicula = [];
+            carrito_coleccionable = [];
+
+            SECTION_CARRITO.innerHTML = `<h2>Gracias por su compra :)</h2>
+                                        <div><button class="boton">Seguir comprando</button><button class="boton">Salir</button></div>`;
+
+        }
+
+    })
+
+}
+
+function crear_ticket(){
+
+    const { jsPDF } = window.jspdf;
+
+    const documento = new jsPDF();
+
+    let y = 10;
+
+    documento.setFontSize(14);
+
+    documento.text("Ticket", 10, y);
+
+    y += 10;
+
+    documento.setFontSize(12);
+
+    documento.text("Producto  -  Cantidad  -  Precio unidad  -  Precio total", 10, y);
+
+    y += 10;
+
+    carrito_pelicula.forEach((m) => {
+
+        documento.text(`${m.titulo}  -  ${m.cantidad}  -  ${m.precio}$  -  ${m.precio * m.cantidad}$`, 10, y);
+
+        y += 10
+
+    });
+
+    carrito_coleccionable.forEach((c) => {
+
+        documento.text(`${c.nombre}  -  ${c.cantidad}  -  ${c.precio}$  -  ${c.precio * c.cantidad}$`, 10, y);
+
+        y += 10;
+
+    });
+
+    y += 7;
+
+    documento.text(`Precio FInal  -  ${calcular_total()}$`, 10, y);
+
+    documento.save();
 }
 
 function evento_boton_cantidad(){
