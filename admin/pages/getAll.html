@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | Crear</title>
+    <title>Dashboard | Listado</title>
     <link rel="stylesheet" href="../src/styles/style.css">
+    <link rel="stylesheet" href="../src/styles/getStyle.css">
     <script defer src="../src/scripts/script.js"></script>
+    <script defer src="../src/scripts/getAll.js"></script>
 </head>
 
 <body>
@@ -18,12 +20,50 @@
                 <img src="../../src/whiteLogo.png" class="logo"/>
                 </a>
             </li>
-            <li><button onclick="history.back()" id="backBtn">Volver</button></li>
-            <li><h1>Create Page</h1></li>
+            <li><button onclick="locate.href('../index.html')" id="backBtn">Volver</button></li>
+            <li><h1>Peliculas | Coleccionables</h1></li>
             <li><p id="admin-user"></p></li>
             </ul>
         </nav>
     </header>
+
+    <main>
+
+        <section class="container">
+            <h2>Listado de peliculas</h2>
+
+            <div class="listado" id="listado">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="../../src/logo.png" alt="Placeholder Image" class="card-image">
+                    </div>
+
+                    <div class="card-content">
+                        <h3>Nombre de la Película</h3>
+                        <div class="detalles">
+                        <p>ID: X</p>
+                        <p>Categoria: Acción</p>
+                        <p>Duración: 120 minutos</p>
+                        <p>Tags: </p>
+                    </div>
+                    </div>
+                    
+                    <button class="detallesBTN" onclick="showDetails(this)">Ver Detalles</button>
+                    <button class="ocultarBTN" onclick="hideDetails(this)">Ocultar Detalles</button>
+                </div>
+
+            </div>   
+        </section>
+
+        <section class="container">
+            <h2>Listado de coleccionables</h2>
+
+            <div class="listado">
+
+            </div>
+        </section>
+    </main>
+
 
 
 
