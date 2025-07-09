@@ -35,11 +35,11 @@ function mostrar_carrito(){
 
         html += `<div class="card-carrito">
 
-                <div><img src="${prod.imagen}" alt="${prod.titulo}" class="img-carrito"></div>
+                <div><img src="${prod.imagen}" alt="${prod.titulo.toUpperCase()}" class="img-carrito"></div>
 
                 <div class="detalles-container">
 
-                    <h3>${prod.titulo}</h3>
+                    <h3>${prod.titulo.toUpperCase()}</h3>
                     <p>Sala: 2D</p>
 
                 </div>

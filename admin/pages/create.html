@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Crear</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    
+    <header>
+
+        <nav>
+
+        </nav>
+
+    </header>
+
+    <main>
+
+        <section id="form-section">
+
+            
+            <form id="form-movie" class="form" action="">
+
+                <h2 style="color: white;">Crear Pelicula</h2>
+
+                <input name="titulo" type="text" placeholder="Titulo" required>
+
+                <select name="categoria" id="" required>
+                    <option value="Aventura">Aventura</option>
+                    <option value="Accion">Accion</option>
+                    <option value="Comedia">Comedia</option>
+                    <option value="Terror">Terror</option>
+                </select>
+
+                <input name="duracion" type="number" placeholder="Duracion" min="1" required>
+
+                <textarea name="sinopsis" id="" placeholder="Sinopsis" required></textarea>
+
+                <input name="imagen" type="text" placeholder="URL Imagen" required>
+
+                <select name="sala" id="" required>
+                    <option value="2D">2D</option>
+                    <option value="3D">3D</option>
+                    <option value="4D">4D</option>
+                </select>
+
+                <select name="clasificacion" id="">
+                    <option value="ATP">ATP</option>
+                    <option value="+13">+13</option>
+                    <option value="+16">+16</option>
+                    <option value="+18">+18</option>
+                </select>
+
+                <input class="form-submit" type="submit">
+
+            </form>
+
+            <form id="form-coleccionable" class="form" action="">
+
+                <h2 style="color: white;">Crear Coleccionable</h2>
+
+                <input name="nombre" type="text" placeholder="Nombre" required>
+
+                <textarea name="descripcion" id="" placeholder="Descripcion" required></textarea>
+
+                <input name="imagen" type="text" placeholder="URL Imagen" required>
+
+                <input type="number" placeholder="Precio" min="1" required>
+
+                <input class="form-submit" type="submit">
+
+            </form>
+
+        </section>
+
+
+
+    </main>
+
+    <footer>
+
+
+
+    </footer>
+
+</body>
+</html>

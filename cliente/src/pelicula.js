@@ -28,12 +28,13 @@ function verificar_pelicula(){
 }
 
 function mostrar_info_pelicula(){
-    TITULO.innerHTML = MOVIE.titulo;
+    TITULO.innerHTML = MOVIE.titulo.toUpperCase();
     IMAGEN.src = MOVIE.imagen;
+    IMAGEN.alt = MOVIE.titulo.toUpperCase();
     SINOPSIS.innerHTML = MOVIE.sinopsis;
-    GENERO.innerHTML = MOVIE.sinopsis;
-    DURACION.innerHTML = MOVIE.duracion;
-    CLASIFICACION.innerHTML = MOVIE.clasificacion;
+    GENERO.innerHTML = "Genero: " + MOVIE.categoria;
+    DURACION.innerHTML = "Duracion: " + MOVIE.duracion;
+    CLASIFICACION.innerHTML = "Clasificacion: " + MOVIE.clasificacion;
 }
 
 function init(){
