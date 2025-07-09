@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | Crear</title>
     <link rel="stylesheet" href="../src/styles/style.css">
-    <script defer src="../src/scripts/script.js"></script>
+    <link rel="stylesheet" href="../src/styles/getIdStyle.css">
+    <script defer src="../src/scripts/getId.js"></script>
 </head>
 
 <body>
@@ -18,12 +19,55 @@
                 <img src="../../src/whiteLogo.png" class="logo"/>
                 </a>
             </li>
-            <li><button onclick="locate.href('../index.html')" id="backBtn">Volver</button></li>
+            <li><button onclick="location.href='../index.html'" id="backBtn">Volver</button></li>
             <li><h1>Create Page</h1></li>
             <li><p id="admin-user"></p></li>
             </ul>
         </nav>
     </header>
+
+    <main>
+        <section class="get-section">
+
+            <div class="get-pelicula getbox">
+                <h2>Buscar pelicula con ID</h2>
+                <form id="get-movie">
+                    <input type="text" name="ID" id="id-movie" class="id-search" placeholder="ID: 1" required>
+                    <button type="submit" class="submitBtn">Buscar</button>
+                </form>
+                <div class="get-result" id="get-movie-result">
+                    
+                </div>
+            </div>
+
+            <div class="get-coleccionable getbox">
+                <h2>Buscar coleccionable con ID</h2>
+
+                <form id="get-collect">
+
+                    <input type="number" name="ID" id="id-collect" class="id-search" placeholder="ID: 1" required>
+                    
+                    <button type="submit" class="submitBtn">Buscar</button>
+
+                </form>
+
+                <div class="get-result" id="get-collect-result">
+                    <div class="card">
+                        <img id="card-img" src="" alt="Pelicula Poster">
+                        <div class="card-content">
+                            <h3 id="card-title">Nombre: </h3>
+                            <p id="card-id">ID: </p>
+                            <p id="card-sinopsis">Descripcion: </p>
+                            <p id="card-genre">Precio: </p>
+                            <p id="card-stock">Stock: </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+        </section>
+    </main>
 
     
 </body>
