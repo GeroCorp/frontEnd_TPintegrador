@@ -28,13 +28,9 @@ const AGE_FILTER = document.getElementById("age-filter");
 const CAT_FILTER = document.getElementById("genre-filter")
 const NOMBRE_USUARIO = document.getElementById("nombre");
 
-const BTN_COLECCIONABLES = document.getElementById("coleccionables-button");
-const BTN_CARRITO = document.getElementById("carrito-button");
 
 let movieList = [];
 let carrito = JSON.parse(sessionStorage.getItem("carrito")) || [];
-
-console.log("Selectores cargados:", AGE_FILTER, CAT_FILTER);
 
 
 // Filtrar peliculas 
@@ -77,7 +73,7 @@ function setMovies(array){
                         <div class="movie-time">
                             <span>${e.duracion}H</span>
                         </div>
-                        <img src="${e.imagen}" alt="${e.titulo}" class="imagen-prod">
+                        <img src="./src/img/${e.imagen}" alt="${e.titulo}" class="imagen-prod"> 
                     </div>
 
                     <div class="prod-text">
@@ -89,7 +85,7 @@ function setMovies(array){
 
             </a>
         `;
-        SECTION_MOVIES.innerHTML = temp_append;
+        SECTION_MOVIES.innerHTML = temp_append;     
 
 
     });
@@ -111,18 +107,6 @@ SEARCH_BAR.addEventListener("keyup", e  =>{
 // Detectar click en filtro para llamar la función
 AGE_FILTER.addEventListener("change", filters)
 CAT_FILTER.addEventListener("change", filters) 
-
-BTN_CARRITO.addEventListener("click", () => {
-
-    location.href = "pages/carrito.html";
-
-});
-
-BTN_COLECCIONABLES.addEventListener("click", () => {
-
-    location.href = "pages/coleccionables.html";
-
-});
 
 function addToCart(id){
 

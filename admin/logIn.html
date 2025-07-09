@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cine | Bienvenido</title>
+    <link rel="stylesheet" href="./src/styles/style.css">
+    <link rel="stylesheet" href="./src/styles/login.css">
+    <script defer src="./src/scripts/loginScript.js"></script>
+</head>
+<body>
+    
+    <header>
+            
+            <div class="container">
+                <img class="logo" src="../src/whiteLogo.png" alt="logo" width="100px" height="100px">
+            </div>
+            
+    </header>
+
+    <main>
+
+        <section>
+
+            <div class="container-login">
+
+                <h2>Iniciar Sesión</h2>
+                
+                <form action="./index.html" id="logIn-form" class="logForm">
+
+                    <label for="userText" class="form-text">Usuario</label>
+                    <input name="username" class="input-form" type="text" placeholder="Usuario" required>
+
+                    <label for="passText" class="form-text">Contraseña</label>
+                    <input name="password" class="input-form" type="password" placeholder="Contraseña" required>
+
+                    <label id="error-msg">Usuario o contraseña incorrecto.</label>
+
+                    <button class="submit" id="boton-confirmar-nombre">Continuar</button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+    </footer>
+
+</body>
+</html>
