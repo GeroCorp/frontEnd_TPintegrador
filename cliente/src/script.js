@@ -30,7 +30,7 @@ const NOMBRE_USUARIO = document.getElementById("nombre");
 
 
 let movieList = [];
-let carrito = JSON.parse(sessionStorage.getItem("carrito")) || [];
+let carrito = JSON.parse(sessionStorage.getItem("carrito_pelicula")) || [];
 
 
 // Filtrar peliculas 
@@ -118,7 +118,7 @@ function addToCart(id){
     movie.cantidad = 1;
 
     carrito.push(movie);
-    sessionStorage.setItem("carrito", JSON.stringify(carrito));
+    sessionStorage.setItem("carrito_pelicula", JSON.stringify(carrito));
     console.log(carrito);
 
 }
