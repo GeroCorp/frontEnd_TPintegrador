@@ -4,6 +4,7 @@ const NOMBRE_USUARIO = document.getElementById("nombre")
 const SECTION_CARRITO = document.getElementById("carrito-container");
 const CAPACIDAD_MAXIMA_SALA = 150;
 
+const url = "http://localhost:3000";
 
 let carrito_pelicula = JSON.parse(sessionStorage.getItem("carrito_pelicula")) || [];
 let carrito_coleccionable = JSON.parse(sessionStorage.getItem("carrito_coleccionable")) || [];
@@ -95,29 +96,50 @@ function mostrar_carrito(){
             <div class="total-container"><button id="boton-comprar" class="boton">Comprar</button></div>`;
 
     SECTION_CARRITO.innerHTML = html;
+}
+
+async function evento_comprar(){
 
     const BOTON_COMPRAR = document.getElementById("boton-comprar");
 
-    BOTON_COMPRAR.addEventListener("click", () => {
+    BOTON_COMPRAR.addEventListener("click", async () => {
 
         if(confirm("¿Comprar?")){
 
-            crear_ticket();
+            try{
 
-            sessionStorage.removeItem("carrito_pelicula");
-            sessionStorage.removeItem("carrito_coleccionable");
+                datos = {
+                    "cliente": sessionStorage.getItem("nombre"),
+                    "monto": calcular_total(),
+                };
 
-            carrito_pelicula = [];
-            carrito_coleccionable = [];
+                await fetch(`${url}/sales`, {
+                    method: "POST",
+                    headers: {
+                                "Content-Type": "application/json"
+                            },
+                    body: JSON.stringify(datos)
+                });
 
-            SECTION_CARRITO.innerHTML = `<h2>Gracias por su compra :)</h2>
-                                        <div><button class="boton">Seguir comprando</button><button class="boton">Salir</button></div>`;
+                crear_ticket();
+    
+                sessionStorage.removeItem("carrito_pelicula");
+                sessionStorage.removeItem("carrito_coleccionable");
+    
+                carrito_pelicula = [];
+                carrito_coleccionable = [];
+    
+                SECTION_CARRITO.innerHTML = `<h2>Gracias por su compra :)</h2>
+                                            <div><button class="boton">Seguir comprando</button><button class="boton">Salir</button></div>`;
 
+            }catch(error){
+                console.log(error);
+            }
         }
 
     })
-
 }
+
 
 function crear_ticket(){
 
@@ -268,6 +290,7 @@ function init(){
     verificar_nombre();
     mostrar_carrito();
     evento_boton_cantidad();
+    evento_comprar();
 }
 
 init();
