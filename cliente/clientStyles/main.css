@@ -68,6 +68,8 @@ padding: 10px;}
   align-items: center;
 }
 
+/* Slider estilo */
+
 .style-switch {
   display: flex;
   align-items: center;
@@ -91,7 +93,7 @@ padding: 10px;}
   width: 0;
   height: 0;
 }
-/* The slider */
+
 .slider {
   position: absolute;
   cursor: pointer;
@@ -131,7 +133,6 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-/* Rounded sliders */
 .slider.round {
   border-radius: 34px;
 }
@@ -232,7 +233,7 @@ main{
   background-color: green;
   width: 100%;
   border: 0;
-
+  border-radius: 0 0 5px 5px;
 }
 
 .boton-añadir:hover{

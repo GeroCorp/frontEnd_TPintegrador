@@ -1,26 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/main.css">
-    <link rel="stylesheet" href="style.css">
-    <script defer src="./src/script.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/styles/style.css" />
+    <script defer src="./src/scripts/script.js"></script>
     <title>Cine UTN</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <div class="logo"></div>
+      <nav id="navbar">
+        <ul>
+          <li>
+            <a class="logo">
+              <img src="../src/whiteLogo.png" alt="Logo" class="logo" />
+            </a>
+          </li>
+          <li><h1>Main Page</h1></li>
+          <li><p id="admin-user"></p></li>
+        </ul>
+      </nav>
     </header>
 
     <main>
+      <section class="options-container">
 
-        <img src="../src/whiteLogo.png" alt="Logo" class="logo-image" height="100" width="100">
-        <h1>Dashboard</h1>
+        <a class="option-box" href="./pages/getAll.html">
+
+          <h2>Listado de peliculas / coleccionable</h2>
+          <p>Mostrar un listado de todas las peliculas en la base de datos</p>
+
+          
+        </a>
+
+        <a class="option-box" href="./pages/get.html">
+          <h2>Buscar pelicula / coleccionable</h2>
+          <p>Buscar una pelicula o coleccionable mediante su id</p>
+
+          
+        </a>
+
+        <a class="option-box" href="./pages/delete.html">
+          <h2>Remover pelicula / coleccionable</h2>
+          <p>Eliminar una pelicula o coleccionable de la base de datos</p>
+
+          
+        </a>
+
+        <a class="option-box" href="./pages/create.html">
+          <h2>Agregar pelicula / coleccionable</h2>
+          <p>Agregar una pelicula o coleccionable a la base de datos</p>
+
+          
+        </a>
+
+        <a class="option-box" href="./pages/update.html">
+          <h2>Editar pelicula / coleccionable</h2>
+          <p>Editar los datos de una pelicula o coleccionable en la base de datos</p>
+
+          
+        </a>
+
+      </section>
+
+      <!--
         <h2>Listado</h2>
 
         <section class="movies-container">
-            <div >
+            <a>
                 
                 <ul class="movies-list" id="lista">
                     <li class="movie-card">
@@ -34,12 +81,10 @@
                     </li>
                 </ul>
 
-            </div>
-
-            <button onclick="getMovies()">APRETAME</button>
+            </a>
 
         </section>
-
+        -->
     </main>
-</body>
+  </body>
 </html>

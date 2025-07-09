@@ -4,17 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | Crear</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../src/styles/style.css">
+    <link rel="stylesheet" href="../src/styles/create.css">
+    <script defer src="../src/scripts/script.js"></script>
+    <script defer src="../src/scripts/create.js"></script>
 </head>
 
 <body>
     
     <header>
-
-        <nav>
-
+        <nav id="navbar">
+            <ul>
+            <li>
+                <a class="logo">
+                <img src="../../src/whiteLogo.png" class="logo"/>
+                </a>
+            </li>
+            <li><button onclick="history.back()" id="backBtn">Volver</button></li>
+            <li><h1>Create Page</h1></li>
+            <li><p id="admin-user"></p></li>
+            </ul>
         </nav>
-
     </header>
 
     <main>
@@ -22,7 +32,7 @@
         <section id="form-section">
 
             
-            <form id="form-movie" class="form" action="">
+            <form id="form-movie" class="form">
 
                 <h2 style="color: white;">Crear Pelicula</h2>
 
@@ -41,11 +51,7 @@
 
                 <input name="imagen" type="text" placeholder="URL Imagen" required>
 
-                <select name="sala" id="" required>
-                    <option value="2D">2D</option>
-                    <option value="3D">3D</option>
-                    <option value="4D">4D</option>
-                </select>
+                <input name="tags" type="text" id="" placeholder="Tags (separados por coma: 2D,3D,4D,...)" required>
 
                 <select name="clasificacion" id="">
                     <option value="ATP">ATP</option>
@@ -54,7 +60,7 @@
                     <option value="+18">+18</option>
                 </select>
 
-                <input class="form-submit" type="submit">
+                <button type="submit" class="form-submit">Submit</button>
 
             </form>
 
@@ -70,7 +76,7 @@
 
                 <input type="number" placeholder="Precio" min="1" required>
 
-                <input class="form-submit" type="submit">
+                <button type="submit" class="form-submit">Submit</button>
 
             </form>
 

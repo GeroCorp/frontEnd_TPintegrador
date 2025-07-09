@@ -1,0 +1,66 @@
+.logo {
+    width: 300px;
+    height: 300px;
+}
+
+body{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-login{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    background-color:rgb(49, 49, 49);
+    padding: 20px;
+    border-radius: 15px;
+    height: fit-content;
+    width: 30vw;
+}
+
+.logForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-text {
+    font-size: 1.2rem;
+}
+
+.input-form{
+    color: white;
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    outline: none;
+    width: 20vw;
+    border-bottom: 2px solid white;
+}
+
+
+
+button{
+    color: white;
+    font-size: 1.4rem;
+    border: none;
+    border-radius: 5px;
+    margin-top: 30px;
+
+    background-color: #28439b;
+}
+button:hover{
+    cursor: pointer;
+    background-color: #034078;
+}
+
+#error-msg {
+    color: red;
+    display: none;
+    font-size:1.2rem;
+}

@@ -1,16 +1,3 @@
-let url= "http://localhost:3000"
-
-const SECTION_MOVIES = document.getElementById("lista")
-
-
-async function test () {
-    let test = await fetch(`${url}/movies`); 
-    let data = await test.json();
-    console.log(data.payload);
-}
-
-test()
-
 function showMovies(array) {
     let htmlElement = "";
 
@@ -20,9 +7,9 @@ function showMovies(array) {
                 <img src="../src/logo.png" alt="${movie.imagen}" height="50" width="50">
                 <h3>${movie.titulo}</h3>
                 <p>${movie.sinopsis}</p>
-                <p>${movie.genero}</p>
+                <p>${movie.categoria}</p>
                 <p>${movie.duracion}</p>
-                <p>${movie.calsificacio}</p>
+                <p>${movie.clasificacion}</p>
             </li>
         `
     });
@@ -46,4 +33,3 @@ async function getMovies() {
 
     }
 }
-
