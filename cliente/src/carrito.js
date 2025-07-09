@@ -32,6 +32,11 @@ function mostrar_carrito(){
 
     let html = ""; 
 
+    if(carrito_pelicula.length === 0 && carrito_coleccionable.length === 0){
+        SECTION_CARRITO.innerHTML = "<h2>El carrito esta vacio</h2>";
+        return;
+    }
+
     carrito_pelicula.forEach((prod) => {
 
         html += `<div class="card-carrito">
@@ -53,7 +58,7 @@ function mostrar_carrito(){
                     
                 </div>
 
-                <div><p>Precio: <span id="precio-producto-1">$2000</span></p></div>
+                <div><p>Precio: <span id="precio-prod-${prod.id}">${prod.cantidad * prod.precio}$</span></p></div>
 
             </div>`;
 
@@ -86,7 +91,7 @@ function mostrar_carrito(){
 
     html += `<div class="linea-carrito"></div>
 
-            <div class="total-container"><p>Total: <span>$4000</span></p></div>`;
+            <div id="precio-total" class="total-container"><p>Total: <span>${calcular_total()}$</span></p></div>`;
 
     SECTION_CARRITO.innerHTML = html;
 
@@ -94,12 +99,15 @@ function mostrar_carrito(){
 
 function evento_boton_cantidad(){
 
+    const PRECIO_TOTAL = document.getElementById("precio-total");
+
     //peliculas
     for(let i=0; i<carrito_pelicula.length; i++){
 
     const BOTON_MAS = document.getElementById(`boton-mas-${carrito_pelicula[i].id}`);
     const BOTON_MENOS = document.getElementById(`boton-menos-${carrito_pelicula[i].id}`);
     const TXT_CANT = document.getElementById(`cant-prod-${carrito_pelicula[i].id}`);
+    const TXT_PRECIO = document.getElementById(`precio-prod-${carrito_pelicula[i].id}`);
 
     BOTON_MAS.addEventListener("click", () => {
 
@@ -109,6 +117,8 @@ function evento_boton_cantidad(){
 
         carrito_pelicula[i].cantidad += 1;
         TXT_CANT.innerHTML = carrito_pelicula[i].cantidad;
+        TXT_PRECIO.innerHTML = carrito_pelicula[i].cantidad * carrito_pelicula[i].precio + "$";
+        PRECIO_TOTAL.innerHTML = "Total: " + calcular_total() + "$";
         sessionStorage.setItem("carrito_pelicula", JSON.stringify(carrito_pelicula));
     })
 
@@ -126,6 +136,8 @@ function evento_boton_cantidad(){
 
 
         TXT_CANT.innerHTML = carrito_pelicula[i].cantidad;
+        TXT_PRECIO.innerHTML = carrito_pelicula[i].cantidad * carrito_pelicula[i].precio + "$";
+        PRECIO_TOTAL.innerHTML = "Total: " + calcular_total() + "$";
         sessionStorage.setItem("carrito_pelicula", JSON.stringify(carrito_pelicula));
     })
 
@@ -148,6 +160,7 @@ function evento_boton_cantidad(){
         carrito_coleccionable[i].cantidad += 1;
         TXT_CANT.innerHTML = carrito_coleccionable[i].cantidad;
         TXT_PRECIO.innerHTML = carrito_coleccionable[i].precio * carrito_coleccionable[i].cantidad + "$";
+        PRECIO_TOTAL.innerHTML = "Total: " + calcular_total() + "$";
         sessionStorage.setItem("carrito_coleccionable", JSON.stringify(carrito_coleccionable));
     })
 
@@ -166,10 +179,23 @@ function evento_boton_cantidad(){
 
         TXT_CANT.innerHTML = carrito_coleccionable[i].cantidad;
         TXT_PRECIO.innerHTML = carrito_coleccionable[i].precio * carrito_coleccionable[i].cantidad  + "$";
+        PRECIO_TOTAL.innerHTML = "Total: " + calcular_total() + "$";
         sessionStorage.setItem("carrito_coleccionable", JSON.stringify(carrito_coleccionable));
     })
 
     }
+
+}
+
+function calcular_total(){
+
+    let total_pelicula = Array.isArray(carrito_pelicula) ? 
+        carrito_pelicula.reduce((acum, p) => acum + (p.precio * p.cantidad), 0) : 0;
+
+    let total_coleccionable = Array.isArray(carrito_coleccionable) ? 
+        carrito_coleccionable.reduce((acum, c) => acum + (c.precio * c.cantidad), 0) : 0;
+
+    return total_coleccionable + total_pelicula;
 
 }
 

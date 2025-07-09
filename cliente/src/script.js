@@ -132,6 +132,8 @@ function addToCart(id){
 
     movie = movieList.find((movie) => movie.id === id);
     movie.cantidad = 1;
+    //cambiar por una variable precio por sala
+    movie.precio = 1000;
 
     carrito.push(movie);
     sessionStorage.setItem("carrito_pelicula", JSON.stringify(carrito));
