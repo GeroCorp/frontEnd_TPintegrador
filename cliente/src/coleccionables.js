@@ -5,7 +5,7 @@ const BTN_CARRITO = document.getElementById("carrito-button");
 const SECTION_PRODUCTOS = document.getElementById("section-productos");
 const url = "http://localhost:3000";
 
-let carrito = JSON.parse(sessionStorage.getItem("carrito")) || [];
+let carrito = JSON.parse(sessionStorage.getItem("carrito_coleccionable")) || [];
 let coleccionables = [];
 
 async function cargar_coleccionables(){
@@ -74,11 +74,40 @@ function mostrar_coleccionables(){
 
 }
 
+function addToCart(id){
+
+    if(carrito.some((c) => c.id === id)){
+        return;
+    }
+
+    coleccionable = coleccionables.find((coleccionable) => coleccionable.id === id);
+    coleccionable.cantidad = 1;
+
+    carrito.push(coleccionable);
+    sessionStorage.setItem("carrito_coleccionable", JSON.stringify(carrito));
+    console.log(carrito);
+
+}
+
+function buttonEvents(){
+
+    coleccionables.forEach((c) => {
+        const button = document.getElementById(`boton-${c.id}`);
+
+        button.addEventListener("click", () => {
+
+            addToCart(c.id);
+        });
+
+    });
+
+}
 
 async function init(){
     verificar_nombre();
     coleccionables = await cargar_coleccionables();
     mostrar_coleccionables();
+    buttonEvents();
 }
 
 init();

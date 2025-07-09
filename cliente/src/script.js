@@ -32,7 +32,7 @@ const BTN_COLECCIONABLES = document.getElementById("coleccionables-button");
 const BTN_CARRITO = document.getElementById("carrito-button");
 
 let movieList = [];
-let carrito = JSON.parse(sessionStorage.getItem("carrito")) || [];
+let carrito = JSON.parse(sessionStorage.getItem("carrito_pelicula")) || [];
 
 console.log("Selectores cargados:", AGE_FILTER, CAT_FILTER);
 
@@ -134,7 +134,7 @@ function addToCart(id){
     movie.cantidad = 1;
 
     carrito.push(movie);
-    sessionStorage.setItem("carrito", JSON.stringify(carrito));
+    sessionStorage.setItem("carrito_pelicula", JSON.stringify(carrito));
     console.log(carrito);
 
 }
