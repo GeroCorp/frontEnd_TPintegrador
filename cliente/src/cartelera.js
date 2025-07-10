@@ -71,17 +71,14 @@ function setMovies(array){
                             <strong>${e.clasificacion}</strong>
                         </div>
                         <div class="movie-time">
-                            <span>${e.duracion}H</span>
+                            <span>${e.duracion}Min</span>
                         </div>
-                        <img src="./src/img/${e.imagen}" alt="${e.titulo}" class="imagen-prod"> 
+                        <img src="../src/img/peliculas/${e.imagen}" alt="${e.titulo}" class="imagen-prod"> 
                     </div>
 
                     <div class="prod-text">
                         <h3 class="movie-title">${e.titulo.toUpperCase()}</h3>
-                        <p>${e.tags.split(',').join(' - ')}</p>
-                        <p>Precio: ${e.precio}$</p>
-                        </div><button id=boton-${e.id} class="boton-añadir">Añadir</button></div>
-                    </div>
+                        <p>${e.tags.split(',').join(' - ')}</p>                    </div>
                 </div>
 
             </div>
@@ -105,37 +102,25 @@ SEARCH_BAR.addEventListener("keyup", e  =>{
     setMovies(filtered);
 });
 
-// Detectar click en filtro para llamar la función
+// Detecta cambio en las opciones de select
 AGE_FILTER.addEventListener("change", filters);
 CAT_FILTER.addEventListener("change", filters); 
 
-function addToCart(id){
-
-    if(carrito.some((m) => m.id === id)){
+function addToCart(movie,ticket){
+    
+    if(carrito.some((m) => m.id === movie.id)){
+        console.error("Already in cart")
+        alert("La entrada ya está en el carrito")
         return;
     }
-
-    movie = movieList.find((movie) => movie.id === id);
+    
+    movie.entrada = ticket;
     movie.cantidad = 1;
 
     carrito.push(movie);
     sessionStorage.setItem("carrito_pelicula", JSON.stringify(carrito));
-    console.log(carrito);
 
-}
-
-function buttonEvents(){
-
-    movieList.forEach((movie) => {
-        const button = document.getElementById(`boton-${movie.id}`);
-
-        button.addEventListener("click", (event) => {
-
-            event.stopPropagation();
-            addToCart(movie.id);
-        });
-
-    });
+    location.href="./carrito.html"
 
 }
 
@@ -175,7 +160,6 @@ async function init(){
     verificar_nombre();
     movieList = await getMovies();
     setMovies(movieList);
-    buttonEvents();
     movieEvents();
 }
 

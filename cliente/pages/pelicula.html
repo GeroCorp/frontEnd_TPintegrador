@@ -12,21 +12,19 @@
     <link rel="stylesheet" href="../clientStyles/peliculas.css">
     
     <link rel="icon" href="">
-    <script defer src="../src/pelicula.js"></script>
+    <script defer src="../src/cartelera.js"></script>
+    <script defer src="../src/carrito.js"></script>
     <script defer src="../src/linkButtons.js"></script>
+    <script defer src="../src/pelicula.js"></script>
 </head>
 <body>
     
     <header>
         <nav id="navbar">
             
-            <img class="logo" src="../src/img/whiteLogo.png" alt="logo">
+            <img class="logo" src="../../src/logo/whiteLogo.png" alt="logo">
             
             <p id="nombre"></p>
-
-            <div class="search-bar">
-                <input type="text" placeholder="Buscar..." id="search-input">
-            </div>
             
             <ul id="nav-linksbtns">
                 
@@ -36,32 +34,53 @@
 
             </ul>
             <div class="style-switch">
-                <img src="../src/img/whiteSun.png" alt="">
+                <img src="../src/img/icons/whiteSun.png" alt="">
                 <label class="switch">
                     <input type="checkbox">
                     <span class="slider round"></span>
                 </label>
-                <img src="../src/img/whiteMoon.png" alt="">
+                <img src="../src/img/icons/whiteMoon.png" alt="">
             </div>
         </nav>
     </header>
 
     <main class="main-container">
         
-        <div class="main-info">
-            <div>
-                <img id="imagen" src="../src/img/lala.jpg" alt="La la land" class="img">
-            </div>
-            <div class="container-info">
-                <h1 id="titulo">Titulo Pelicula</h1>
-                <p id="sinopsis" class="pelicula-descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Quisquam, voluptatum. Doloribus, cumque. Doloremque,
-                    voluptates, cumque. Doloremque, voluptates, cumque. 
-                </p>
-                <p id="genero" class="pelicula-genero">Genero: Terror</p>
-                <p id="duracion" class="pelicula-duracion">Duracion: 120 min</p>
-                <p id="clasificacion" class="pelicula-clasificacion">Clasificacion: +16</p>
-                <p id="salas" class="pelicula-genero"></p>
+        <div class="main-info flexItem">
+            <h1 id="titulo"></h1>
+            <img id="imagen" src="" alt="" class="pelicula-img">
+            <p id="sinopsis" class="pelicula-descripcion">
+            </p>
+            <p id="genero" class="pelicula-genero"></p>
+            <p id="duracion" class="pelicula-duracion"></p>
+            <p id="clasificacion" class="pelicula-clasificacion"></p>
+        </div>
+
+        <div class="entradas-info flexItem">
+
+            <h2>Entradas</h2>
+            <div class="entradas-container">
+                <table class="entradas-table">
+                    <thead>
+                        <tr>
+                            <th>Hora</th>
+                            <th>Fecha</th>
+                            <th>Sala</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="en1">
+                            <td>18:00</td>
+                            <td>01/01</td>
+                            <td>2D</td>
+                        </tr>
+                        <tr id="en2">
+                            <td>20:00</td>
+                            <td>01/01</td>
+                            <td>3D</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 

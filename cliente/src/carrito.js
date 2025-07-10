@@ -45,6 +45,8 @@ function mostrar_carrito(){
         return;
     }
 
+    console.log(carrito_pelicula[0]);
+
     html += crear_string_carrito_peliculas();
     html += crear_string_carrito_coleccionables();
 
@@ -68,12 +70,12 @@ function crear_string_carrito_peliculas(){
 
         html += `<div class="card-carrito">
 
-                <div><img src="${prod.imagen}" alt="${prod.titulo.toUpperCase()}" class="img-carrito"></div>
+                <div><img src="../src/img/peliculas/${prod.imagen}" alt="${prod.titulo.toUpperCase()}" class="img-carrito"></div>
 
                 <div class="detalles-container">
 
                     <h3>${prod.titulo.toUpperCase()}</h3>
-                    <p>Sala: 2D</p>
+                    <p>Sala: ${prod.entrada.sala} | Horario: ${prod.entrada.horario}Hs | Fecha: ${prod.entrada.fecha}</p>
 
                 </div>
 

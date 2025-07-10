@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashbord | Actualizar Producto</title>
     <link rel="stylesheet" href="../src/styles/style.css">
+    <link rel="stylesheet" href="../src/styles/update.css">
+    <script defer src="../src/scripts/update.js"></script>
+    <script defer src="../src/scripts/updateCollect.js"></script>
 </head>
 
 <body>
@@ -14,7 +17,7 @@
             <ul>
             <li>
                 <a class="logo">
-                <img src="../../src/whiteLogo.png" class="logo"/>
+                <img src="../../src/logo/whiteLogo.png" class="logo"/>
                 </a>
             </li>
             <li><button onclick="location.href='../index.html'" id="backBtn">Volver</button></li>
@@ -24,6 +27,55 @@
         </nav>
     </header>
 
+    <main>
+        <section class="update-section">
+
+            <div class="update-pelicula updatebox">
+                <h2>Buscar pelicula con ID</h2>
+                <form id="update-movie">
+                    <input type="number" name="ID" id="id-movie" class="id-search" placeholder="ID: 1" required>
+                    <button type="submit" class="submitBtn">Buscar</button>
+                </form>
+
+                <div class="update-result" id="update-movie-result">
+                    <div class="update-movie-card">
+                        
+                            
+
+                            </div>
+                        </form>
+                    </div>
+
+                
+
+               
+                    
+                </div>
+
+            
+
+            </div>
+
+            <div class="update-coleccionable updatebox">
+                <h2>Buscar coleccionable con ID</h2>
+
+                <form id="update-collect">
+
+                    <input type="number" name="ID" id="id-collect" class="id-search" placeholder="ID: 1" required>
+                    
+                    <button type="submit" class="submitBtn">Buscar</button>
+
+                </form>
+
+                <div class="update-result" id="update-collect-result">
+                    
+                </div>
+
+
+            </div>
+            
+        </section>
+    </main>
     
 </body>
 </html>

@@ -1,7 +1,8 @@
-const DELETE_BUTTON = document.getElementById("delButton");
+const DELETE_MOVIE = document.getElementById("delMovie");
+const DELETE_COLLECTIBLE = document.getElementById("delCollect")
 
 
-DELETE_BUTTON.addEventListener("click", e=>{
+DELETE_MOVIE.addEventListener("click", e=>{
 
     const DATA = new FormData(movieForm);
 
@@ -11,7 +12,14 @@ DELETE_BUTTON.addEventListener("click", e=>{
     deleteMovie(id)
 
 })
+DELETE_COLLECTIBLE.addEventListener("click", e =>{
+    const DATA = new FormData(collectForm);
 
+    let id = parseInt(DATA.get("ID"));
+
+    deleteCollectible(id)
+}
+)
 
 async function deleteMovie(id){
 
@@ -27,7 +35,36 @@ async function deleteMovie(id){
         if(res.ok) {
             alert(result.message);
             movieRes.innerHTML= "";
-            DELETE_BUTTON.style.display="none";
+            DELETE_MOVIE.style.display="none";
+        }else{
+            console.error("Error: ", result.message);
+            alert("No se pudo eliminar el producto")
+        }
+
+
+    } catch (error) {
+        console.error("Error en la solicitud DELETE", error);
+        alert("Ocurrio un error al eliminar una pelicula")
+    }
+
+}
+
+
+async function deleteCollectible(id){
+
+    try 
+    {
+
+        let res = await fetch(`${url}collectibles/${id}`, {
+            method: "DELETE"
+        });
+
+        let result = await res.json();
+
+        if(res.ok) {
+            alert(result.message);
+            collectRes.innerHTML= "";
+            DELETE_COLLECTIBLE.style.display="none";
         }else{
             console.error("Error: ", result.message);
             alert("No se pudo eliminar el producto")

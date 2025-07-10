@@ -1,9 +1,9 @@
 /*
 .main-container{
     display: flex;
-    width: 100%;
+    flex-direction: row;
+    justify-content: center;
     padding: 25px;
-    justify-content: space-around;
 }
 
 .main-container{
@@ -38,5 +38,40 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 50vh;
+}
+
+.pelicula-img{
+    height: 60vh;
+}
+
+.flexItem{
+    width: 30vw;
+}
+
+.entradas-table {
+    width: 60%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #31313a;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border: 1px solid #4e4e6e;
+    font-size: 1.1em;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.entradas-table th, .entradas-table td {
+    padding: 12px 30px;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: center;
+}
+
+.entradas-table th {
+    background: #3a3a4d;
+    color: #ffb347;
+    letter-spacing: 1px;
+}
+
+.entradas-table tr:hover {
+    background: #0000007e;
+    transition: background 0.2s;
 }

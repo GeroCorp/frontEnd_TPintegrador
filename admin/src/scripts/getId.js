@@ -14,23 +14,42 @@ movieForm.addEventListener("submit", e=>{
 
     let id = parseInt(DATA.get("ID"))
 
-    getByID(id)
+    getByID("movies",id)
 
-    console.log(movieRes.childNodes);
 
 })
 
-async function getByID(id){
+
+collectForm.addEventListener("submit", e=>{
+    e.preventDefault();
+
+    const DATA = new FormData(collectForm);
+
+
+    let id = parseInt(DATA.get("ID"))
+
+    getByID("collectibles",id)
+
+
+})
+
+async function getByID(target,id){
 
     try{
         
-        let res = await fetch(`${url}movies/${id}`)
+        let res = await fetch(`${url}${target}/${id}`)
+
+        if(!res.ok){
+            console.error("Producto no encontrado");
+            alert("Item no encontrado")
+            return ;
+        }
 
         const data = await res.json();
 
-        movie = data.payload[0];
+        let item = data.payload[0];
 
-        showMovieRes(movie)
+        target == "movies" ? showMovieRes(item) : showCollectRes(item)
 
     }catch(e){
         console.error(e);
@@ -44,14 +63,14 @@ function showMovieRes(movie){
 
     if (!movie || !movie.id) {
         movieRes.innerHTML = "<h3>Película no encontrada</h3>";
-        DELETE_BUTTON.style.display = "none";
+        DELETE_MOVIE.style.display = "none";
 
         return;
     }
 
     let htmlElemment = `
         <div class="card">
-            <img id="card-img" src="${movie.titulo}" alt="Pelicula Poster">
+            <img id="card-img" src="../../cliente/src/img/peliculas/${movie.imagen}" alt="Pelicula Poster">
             <div class="card-content">
                 <h3 id="card-title">Titulo: ${movie.titulo}</h3>
                 <p id="card-id">ID: ${movie.id}</p>
@@ -64,6 +83,32 @@ function showMovieRes(movie){
                     `
 
     movieRes.innerHTML = htmlElemment;
-    DELETE_BUTTON.style.display = "block";
+    DELETE_MOVIE.style.display = "block";
+
+}
+
+function showCollectRes(collect){
+
+
+    if (!collect || !collect.id) {
+        collectRes.innerHTML = "<h3>Producto no encontrado</h3>";
+        DELETE_COLLECTIBLE.style.display = "none";
+        return;
+    }
+
+    let htmlElemment = `
+        <div class="card">
+            <img id="card-img" src="${collect.imagen}" alt="Imagen Producto">
+            <div class="card-content">
+                <h3 id="card-title">Nombre: ${collect.nombre}</h3>
+                <p id="card-id">ID: ${collect.id}</p>
+                <p id="card-sinopsis">Descripcion: ${collect.descripcion}</p>
+                <p id="card-genre">Precio: $${collect.precio}</p>
+            </div>
+        </div>
+                    `
+
+    collectRes.innerHTML = htmlElemment;
+    DELETE_COLLECTIBLE.style.display = "block";
 
 }

@@ -1,7 +1,8 @@
 let url = "http://localhost:3000";
 let detail_button = document.querySelector("button");
 let hide_button = document.querySelector("ocultarBTN");
-const LISTADO = document.getElementById("listado");
+const LISTADO_PELICULAS = document.getElementById("listado-peliculas");
+const LISTADO_COLECCIONABLES = document.getElementById("listado-coleccionables");
 
 
 function showMovies(array) {
@@ -11,7 +12,7 @@ function showMovies(array) {
         htmlElement +=`
             <div class="card">
                     <div class="card-image">
-                        <img src="../../cliente/src/img/${movie.imagen}" alt="Placeholder Image" class="card-image">
+                        <img src="../../cliente/src/img/peliculas/${movie.imagen}" alt="Placeholder Image" class="card-image">
                     </div>
 
                     <div class="card-content">
@@ -31,7 +32,37 @@ function showMovies(array) {
         `
     });
 
-    LISTADO.innerHTML = htmlElement;
+    LISTADO_PELICULAS.innerHTML = htmlElement;
+
+}
+
+function showCollectibles(array) {
+    let htmlElement = "";
+
+    array.forEach(collect => {
+        
+        htmlElement +=`
+            <div class="card">
+                    <div class="card-image">
+                        <img src="${collect.imagen}" alt="Placeholder Image" class="card-image">
+                    </div>
+
+                    <div class="card-content">
+                        <h3>${collect.nombre.toUpperCase()}</h3>
+                        <div class="detalles">
+                        <p>ID: ${collect.id}</p>
+                        <p>Descripción: ${collect.descripcion}</p>
+                        <p>Precio: $${collect.precio}</p>
+                    </div>
+                    </div>
+                    
+                    <button class="detallesBTN" onclick="showDetails(this)">Ver Detalles</button>
+                    <button class="ocultarBTN" onclick="hideDetails(this)">Ocultar Detalles</button>
+                </div>
+        `
+    });
+
+    LISTADO_COLECCIONABLES.innerHTML = htmlElement;
 
 }
 
@@ -48,6 +79,22 @@ async function getMovies() {
 
         console.error(error);
 
+    }
+}
+
+async function getCollectibles() {
+    try {
+        
+        let coleccionables = await fetch(`${url}/collectibles`)
+
+        let datos = await coleccionables.json();
+
+
+        showCollectibles(datos.payload)
+
+    } catch (error) {
+        console.error(error);
+        
     }
 }
 
@@ -75,6 +122,7 @@ function hideDetails(obj){
 
 function init(){
     getMovies();
+    getCollectibles();
 }
 
 init()

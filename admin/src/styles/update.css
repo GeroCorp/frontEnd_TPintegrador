@@ -1,4 +1,4 @@
-.get-section{
+.update-section{
     margin-top: 30px;
     display: flex;
     justify-content: space-evenly;
@@ -6,7 +6,7 @@
     height: 100%;
 }
 
-.getbox{
+.updatebox{
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -41,7 +41,7 @@
 }
 
 
-.card{
+.card-content{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -51,24 +51,37 @@
     border-radius: 10px;
     padding: 20px 40px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 1.2rem;
 }
-.card img{
+#card-img{
     width: 10vw;
     height: auto;
     border-radius: 10px;
 }
 
-.deleteBtn{
-    display: none;;
-    background-color: #ff4d4d;
+.card-content input{
     color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
+    width: 100%;
+    height: 40px;
     border-radius: 5px;
+    border: none;
+    padding: 0 10px;
+    font-size: 16px;
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
-.deleteBtn:hover{
-    background-color: #ff1a1a;
+.updateBtn{
+   width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(17, 42, 97);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.updateBtn:hover{
+    background-color: rgb(63, 104, 192);
 }
