@@ -1,3 +1,9 @@
+## Frontend completo
+IMPORTANTE: Agregar precio a la tabla peliculas para correcto funcionamiento.
+
+
+
+
 ## Integración del backEnd
 La integración del backEnd está casi completa.
 Falta realizar las paginas de administración

@@ -62,7 +62,7 @@ function filters() {
 function setMovies(array){
     let temp_append= "";
     array.forEach(e => {
-        temp_append += `<a id="movie-${e.id}" href="#" class="container-producto">
+        temp_append += `<div id="movie-${e.id}" class="container-producto" style="cursor: pointer;">
 
                 <div class="card-producto">
 
@@ -79,11 +79,12 @@ function setMovies(array){
                     <div class="prod-text">
                         <h3 class="movie-title">${e.titulo.toUpperCase()}</h3>
                         <p>${e.tags.split(',').join(' - ')}</p>
+                        <p>Precio: ${e.precio}$</p>
                         </div><button id=boton-${e.id} class="boton-añadir">Añadir</button></div>
                     </div>
                 </div>
 
-            </a>
+            </div>
         `;
         SECTION_MOVIES.innerHTML = temp_append;     
 
@@ -116,8 +117,6 @@ function addToCart(id){
 
     movie = movieList.find((movie) => movie.id === id);
     movie.cantidad = 1;
-    //cambiar por una variable precio por sala
-    movie.precio = 1000;
 
     carrito.push(movie);
     sessionStorage.setItem("carrito_pelicula", JSON.stringify(carrito));

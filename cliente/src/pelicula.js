@@ -6,6 +6,7 @@ const SINOPSIS = document.getElementById("sinopsis");
 const GENERO = document.getElementById("genero");
 const DURACION = document.getElementById("duracion");
 const CLASIFICACION = document.getElementById("clasificacion");
+const SALAS = document.getElementById("salas");
 
 
 function verificar_nombre(){
@@ -33,8 +34,9 @@ function mostrar_info_pelicula(){
     IMAGEN.alt = MOVIE.titulo.toUpperCase();
     SINOPSIS.innerHTML = MOVIE.sinopsis;
     GENERO.innerHTML = "Genero: " + MOVIE.categoria;
-    DURACION.innerHTML = "Duracion: " + MOVIE.duracion;
+    DURACION.innerHTML = "Duracion: " + MOVIE.duracion + " HS";
     CLASIFICACION.innerHTML = "Clasificacion: " + MOVIE.clasificacion;
+    SALAS.innerHTML = "Salas: " + MOVIE.tags.split(',').join(' - ');
 }
 
 function init(){
