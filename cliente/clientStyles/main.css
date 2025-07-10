@@ -177,7 +177,7 @@ main{
     border: none;
     font-size: 16px;
     outline: none;
-    width: 50vw;
+    width: 30vw;
 }
 
 .filter-select{
@@ -245,7 +245,8 @@ main{
 footer{
     background-color: #0A1128;
     color: white;
-    padding: 20px;
+    padding-top: 20px;
+    margin-top: 20px;
     position: relative;
     bottom: 0;
     width: 100%;
@@ -268,12 +269,16 @@ footer ul{
     flex-direction: column;
   }
 
-  footer{
-    padding: 0;
-  }
-
   .style-switch{
     margin: 0;
+  }
+
+  .filter-select{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
   }
 
 }
