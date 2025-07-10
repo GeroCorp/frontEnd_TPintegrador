@@ -25,7 +25,7 @@ async function getMovies() {
 const SECTION_MOVIES = document.getElementById("section-productos");
 const SEARCH_BAR = document.getElementById("search-input");
 const AGE_FILTER = document.getElementById("age-filter");
-const CAT_FILTER = document.getElementById("genre-filter")
+const CAT_FILTER = document.getElementById("genre-filter");
 const NOMBRE_USUARIO = document.getElementById("nombre");
 
 
@@ -102,11 +102,11 @@ SEARCH_BAR.addEventListener("keyup", e  =>{
     );
 
     setMovies(filtered);
-})
+});
 
 // Detectar click en filtro para llamar la función
-AGE_FILTER.addEventListener("change", filters)
-CAT_FILTER.addEventListener("change", filters) 
+AGE_FILTER.addEventListener("change", filters);
+CAT_FILTER.addEventListener("change", filters); 
 
 function addToCart(id){
 
@@ -151,7 +151,7 @@ function movieEvents(){
             event.stopPropagation();
 
             sessionStorage.setItem("movie", JSON.stringify(movie));
-            location.href = "pages/pelicula.html";
+            location.href = "pelicula.html";
 
         });
 
@@ -164,7 +164,7 @@ function verificar_nombre(){
     let nombre = sessionStorage.getItem("nombre");
 
     if(!nombre){
-        location.href = "index.html";
+        location.href = "../index.html";
     }
 
     NOMBRE_USUARIO.innerHTML = "Hola, " + nombre;

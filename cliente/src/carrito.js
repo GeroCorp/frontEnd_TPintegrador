@@ -2,8 +2,6 @@
 // constantes y variables globales
 
 // elementos html
-const BTN_CARTELERA = document.getElementById("movies-button");
-const BTN_COLECCIONABLES = document.getElementById("coleccionables-button");
 const NOMBRE_USUARIO = document.getElementById("nombre")
 const SECTION_CARRITO = document.getElementById("carrito-container");
 
@@ -17,15 +15,6 @@ const url = "http://localhost:3000";
 let carrito_pelicula = JSON.parse(sessionStorage.getItem("carrito_pelicula")) || [];
 let carrito_coleccionable = JSON.parse(sessionStorage.getItem("carrito_coleccionable")) || [];
 
-//eventos de los botones de navegacion
-
-BTN_CARTELERA.addEventListener("click", () => {
-    location.href = "../main.html";
-});
-
-BTN_COLECCIONABLES.addEventListener("click", () => {
-    location.href = "coleccionables.html";
-});
 
 // funciones
 
@@ -173,7 +162,9 @@ async function evento_comprar(){
                 carrito_coleccionable = [];
     
                 SECTION_CARRITO.innerHTML = `<h2>Gracias por su compra :)</h2>
-                                            <div><button class="boton">Seguir comprando</button><button class="boton">Salir</button></div>`;
+                                            <div><button id="boton-seguir" class="boton">Seguir comprando</button><button id="boton-salir" class="boton">Salir</button></div>`;
+
+                eventos_boton_postcompra();
 
             }catch(error){
                 console.log(error);
@@ -181,6 +172,23 @@ async function evento_comprar(){
         }
 
     })
+}
+
+function eventos_boton_postcompra(){
+
+    const BOTON_SEGUIR = document.getElementById("boton-seguir");
+    const BOTON_SALIR = document.getElementById("boton-salir");
+
+    BOTON_SEGUIR.addEventListener("click", () => {
+        location.href = "cartelera.html";
+    });
+
+    BOTON_SALIR.addEventListener("click", () => {
+        sessionStorage.clear();
+        location.href = "../index.html";
+    });
+
+
 }
 
 // crea el ticket de la compra y lo descarga
@@ -200,6 +208,10 @@ function crear_ticket(){
     y += 10;
 
     documento.setFontSize(12);
+
+    documento.text(`Cliente: ${sessionStorage.getItem("nombre")}`, 10, y);
+
+    y += 10;
 
     documento.text("Producto  -  Cantidad  -  Precio unidad  -  Precio total", 10, y);
 

@@ -1,12 +1,20 @@
 
-
-const BTN_MOVIES = document.getElementById("movies-button");
-const BTN_CARRITO = document.getElementById("carrito-button");
+const SEARCH_BAR = document.getElementById("search-input");
 const SECTION_PRODUCTOS = document.getElementById("section-productos");
 const url = "http://localhost:3000";
 
 let carrito = JSON.parse(sessionStorage.getItem("carrito_coleccionable")) || [];
 let coleccionables = [];
+
+SEARCH_BAR.addEventListener("keyup", e  =>{
+    let inputValue = SEARCH_BAR.value.toUpperCase();
+
+    let filtered = coleccionables.filter(
+        c => c.nombre.toUpperCase().includes(inputValue)
+    );
+
+    mostrar_coleccionables(filtered);
+});
 
 async function cargar_coleccionables(){
 
@@ -21,14 +29,6 @@ async function cargar_coleccionables(){
     }
 }
 
-BTN_MOVIES.addEventListener("click", () => {
-    location.href = "../main.html";
-});
-
-BTN_CARRITO.addEventListener("click", () => {
-    location.href = "carrito.html";
-});
-
 function verificar_nombre(){
 
     let nombre = sessionStorage.getItem("nombre");
@@ -42,7 +42,7 @@ function verificar_nombre(){
 }
 
 
-function mostrar_coleccionables(){
+function mostrar_coleccionables(coleccionables){
 
     let html = "";
 
@@ -106,7 +106,7 @@ function buttonEvents(){
 async function init(){
     verificar_nombre();
     coleccionables = await cargar_coleccionables();
-    mostrar_coleccionables();
+    mostrar_coleccionables(coleccionables);
     buttonEvents();
 }
 

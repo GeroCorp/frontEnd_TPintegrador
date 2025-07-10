@@ -10,7 +10,7 @@ function continuar_pantalla_principal(){
     }
 
     sessionStorage.setItem("nombre", INPUT_NOMBRE.value);
-    location.href = "main.html";
+    location.href = "pages/cartelera.html";
 }
 
 BOTON_CONFIRMAR.addEventListener("click", continuar_pantalla_principal);

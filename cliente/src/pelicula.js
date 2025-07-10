@@ -23,7 +23,7 @@ function verificar_nombre(){
 function verificar_pelicula(){
 
     if(!MOVIE){
-        location.href = "../main.html";
+        location.href = "cartelera.html";
     }
 }
 
