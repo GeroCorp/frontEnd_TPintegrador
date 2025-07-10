@@ -1,13 +1,23 @@
+
+// constantes y variables globales
+
+// elementos html
 const BTN_CARTELERA = document.getElementById("movies-button");
 const BTN_COLECCIONABLES = document.getElementById("coleccionables-button");
 const NOMBRE_USUARIO = document.getElementById("nombre")
 const SECTION_CARRITO = document.getElementById("carrito-container");
+
+
 const CAPACIDAD_MAXIMA_SALA = 150;
 
+//url del servidor
 const url = "http://localhost:3000";
 
+// carrito de peliculas y coleccionables
 let carrito_pelicula = JSON.parse(sessionStorage.getItem("carrito_pelicula")) || [];
 let carrito_coleccionable = JSON.parse(sessionStorage.getItem("carrito_coleccionable")) || [];
+
+//eventos de los botones de navegacion
 
 BTN_CARTELERA.addEventListener("click", () => {
     location.href = "../main.html";
@@ -16,6 +26,10 @@ BTN_CARTELERA.addEventListener("click", () => {
 BTN_COLECCIONABLES.addEventListener("click", () => {
     location.href = "coleccionables.html";
 });
+
+// funciones
+
+// verificar que el usuario ingreso su nombre, en caso contrario enviarlo a la pantalla de ingreso
 
 function verificar_nombre(){
 
@@ -29,14 +43,37 @@ function verificar_nombre(){
 
 }
 
+// renderiza el carrito
+
 function mostrar_carrito(){
 
     let html = ""; 
+
+    // verificar q ambos carritos no esten vacios
 
     if(carrito_pelicula.length === 0 && carrito_coleccionable.length === 0){
         SECTION_CARRITO.innerHTML = "<h2>El carrito esta vacio</h2>";
         return;
     }
+
+    html += crear_string_carrito_peliculas();
+    html += crear_string_carrito_coleccionables();
+
+    // añadir el precio total al final del carrito
+
+    html += `<div class="linea-carrito"></div>
+
+            <div id="precio-total" class="total-container"><p>Total: <span>${calcular_total()}$</span></p></div>
+            <div class="total-container"><button id="boton-comprar" class="boton">Comprar</button></div>`;
+
+    SECTION_CARRITO.innerHTML = html;
+}
+
+// crea el string del html para las peliculas
+
+function crear_string_carrito_peliculas(){
+
+    let html = "";
 
     carrito_pelicula.forEach((prod) => {
 
@@ -65,6 +102,15 @@ function mostrar_carrito(){
 
     });
 
+    return html;
+}
+
+// crea el string del html para los coleccionables
+
+function crear_string_carrito_coleccionables(){
+
+    let html = "";
+
     carrito_coleccionable.forEach(c => {
         html += `<div class="card-carrito">
 
@@ -90,13 +136,10 @@ function mostrar_carrito(){
             </div>`;
     });
 
-    html += `<div class="linea-carrito"></div>
-
-            <div id="precio-total" class="total-container"><p>Total: <span>${calcular_total()}$</span></p></div>
-            <div class="total-container"><button id="boton-comprar" class="boton">Comprar</button></div>`;
-
-    SECTION_CARRITO.innerHTML = html;
+    return html;
 }
+
+// añadir evento comprar al boton de compra, crea el ticket y guarda la venta en el server
 
 async function evento_comprar(){
 
@@ -140,6 +183,7 @@ async function evento_comprar(){
     })
 }
 
+// crea el ticket de la compra y lo descarga
 
 function crear_ticket(){
 
@@ -179,10 +223,12 @@ function crear_ticket(){
 
     y += 7;
 
-    documento.text(`Precio FInal  -  ${calcular_total()}$`, 10, y);
+    documento.text(`Precio Final  -  ${calcular_total()}$`, 10, y);
 
     documento.save();
 }
+
+// añade la funcionalidad de sumar y restar productos del carrito
 
 function evento_boton_cantidad(){
 
@@ -218,6 +264,7 @@ function evento_boton_cantidad(){
             sessionStorage.setItem("carrito_pelicula", JSON.stringify(carrito_pelicula));
             mostrar_carrito();
             evento_boton_cantidad();
+            evento_comprar();
             return;
         }
 
@@ -260,6 +307,7 @@ function evento_boton_cantidad(){
             sessionStorage.setItem("carrito_coleccionable", JSON.stringify(carrito_coleccionable));
             mostrar_carrito();
             evento_boton_cantidad();
+            evento_comprar();
             return;
         }
 
@@ -274,6 +322,8 @@ function evento_boton_cantidad(){
 
 }
 
+// calcula y devuelve el precio total del carrito
+
 function calcular_total(){
 
     let total_pelicula = Array.isArray(carrito_pelicula) ? 
@@ -286,11 +336,15 @@ function calcular_total(){
 
 }
 
+// funcion de inicio
+
 function init(){
     verificar_nombre();
     mostrar_carrito();
     evento_boton_cantidad();
     evento_comprar();
 }
+
+// inicio
 
 init();

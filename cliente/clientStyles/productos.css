@@ -105,6 +105,10 @@
    .search-bar{
     display: none;
     transition: 500ms;
-   }   
+   }
+   
+   .main-container{
+    padding: 0;
+   }
     
 }
