@@ -164,7 +164,7 @@ async function evento_comprar(){
                 carrito_coleccionable = [];
     
                 SECTION_CARRITO.innerHTML = `<h2>Gracias por su compra :)</h2>
-                                            <div><button id="boton-seguir" class="boton">Seguir comprando</button><button id="boton-salir" class="boton">Salir</button></div>`;
+                                            <div class="btns-container"><button id="boton-seguir" class="boton">Seguir comprando</button><button id="boton-salir" class="boton">Salir</button></div>`;
 
                 eventos_boton_postcompra();
 

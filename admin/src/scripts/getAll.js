@@ -23,6 +23,7 @@ function showMovies(array) {
                         <p>Duración: ${movie.duracion} horas</p>
                         <p>Clasificacion: ${movie.clasificacion}</p>
                         <p>Tags: ${movie.tags.split(',').join(' - ')}</p>
+                        <p>Precio: $${movie.precio}</p>
                     </div>
                     </div>
                     

@@ -87,6 +87,9 @@ function toUpdateMovie(e, movie){
                 </p>
 
                 <p id="card-image">Imagen: <input type="text" name="imagen" value="${movie.imagen}"></p>
+
+                <input name="precio" type="number" value="${movie.precio}" min="1" required>
+
                 <button class="updateBtn" id="update-movie-btn">Actualizar</button>
             </form>
 

@@ -49,7 +49,8 @@ async function createMovie(movie) {
                 sinopsis: movie.sinopsis, 
                 imagen: movie.imagen,
                 tags: movie.tags,
-                clasificacion: movie.clasificacion
+                clasificacion: movie.clasificacion,
+                precio: movie.precio
 
             })
         }) 

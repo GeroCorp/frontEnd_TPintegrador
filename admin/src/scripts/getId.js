@@ -73,11 +73,12 @@ function showMovieRes(movie){
             <img id="card-img" src="../../cliente/src/img/peliculas/${movie.imagen}" alt="Pelicula Poster">
             <div class="card-content">
                 <h3 id="card-title">Titulo: ${movie.titulo}</h3>
-                <p id="card-id">ID: ${movie.id}</p>
-                <p id="card-sinopsis">Sinopsis: ${movie.sinopsis}</p>
-                <p id="card-genre">Genero: ${movie.categoria}</p>
-                <p id="card-tags">Tags: ${movie.tags}</p>
-                <p id="card-clas">Clasificacion: ${movie.clasificacion}</p>
+                <p>ID: ${movie.id}</p>
+                <p>Sinopsis: ${movie.sinopsis}</p>
+                <p>Genero: ${movie.categoria}</p>
+                <p>Tags: ${movie.tags}</p>
+                <p>Clasificacion: ${movie.clasificacion}</p>
+                <p>Precio: $${movie.precio}</p>
             </div>
         </div>
                     `

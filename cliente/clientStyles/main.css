@@ -1,7 +1,11 @@
 *{
     font-family: sans-serif;
 }
-
+html, body{
+    height: 100%;
+    margin: 0;
+    
+}
 body{
     margin: 0;
     background-color: #1B1F30;
@@ -147,6 +151,7 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    flex:1;
 }
 
 .titulo{
